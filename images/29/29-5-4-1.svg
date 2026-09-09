@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760" role="img" aria-labelledby="title desc">
+  <title id="title">关键词数据处理结果与三份数据的用途</title>
+  <desc id="desc">处理2000条关键词样本，得到1600条训练、200条验证、200条测试；展示输出文件和划分原则。这是教学图解，不是终端截图。</desc>
+  <defs>
+    <linearGradient id="terminal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#172554"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="9" stdDeviation="14" flood-color="#0f172a" flood-opacity="0.16"/></filter>
+  </defs>
+  <rect width="1440" height="760" rx="28" fill="#f8fafc"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+    <text x="70" y="72" font-size="34" font-weight="700" fill="#0f172a">关键词数据处理结果</text>
+    <text x="70" y="110" font-size="20" fill="#475569">输入 2,000 条关键词样本，检查、清洗后按固定规则划分；以下为输出说明，不是终端截图</text>
+    <rect x="70" y="150" width="850" height="520" rx="24" fill="url(#terminal)" filter="url(#shadow)"/>
+    <g font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'PingFang SC','Microsoft YaHei',monospace" font-size="21">
+      <text x="110" y="215" fill="#94a3b8">$ python3 prepare_keywords_dataset.py \</text>
+      <text x="135" y="252" fill="#cbd5e1">--source keywords_data_sharegpt_small.jsonl \</text>
+      <text x="135" y="289" fill="#cbd5e1" font-size="19">--output-dir processed/keywords-clean-repro</text>
+      <line x1="110" y1="325" x2="870" y2="325" stroke="#334155" stroke-width="2"/>
+      <text x="110" y="375" fill="#86efac">keywords_train.jsonl: 1600 条</text>
+      <text x="110" y="420" fill="#86efac">keywords_validation.jsonl: 200 条</text>
+      <text x="110" y="465" fill="#86efac">keywords_test.jsonl: 200 条</text>
+      <text x="110" y="530" fill="#fde68a">数据集登记：dataset_info.json</text>
+      <text x="110" y="575" fill="#fde68a">处理明细：cleaning_report.json</text>
+      <text x="110" y="620" fill="#c4b5fd">来源与划分：manifest.json</text>
+    </g>
+    <rect x="970" y="170" width="390" height="135" rx="22" fill="#ecfdf5" stroke="#34d399" stroke-width="2"/>
+    <text x="1005" y="215" font-size="22" font-weight="700" fill="#065f46">1、先清洗，再划分</text>
+    <text x="1005" y="252" font-size="19" fill="#475569">检查结构、统一格式并处理重复；</text>
+    <text x="1005" y="280" font-size="19" fill="#475569">关键词含义仍需对照文章审核。</text>
+    <rect x="970" y="335" width="390" height="135" rx="22" fill="#eff6ff" stroke="#60a5fa" stroke-width="2"/>
+    <text x="1005" y="380" font-size="22" font-weight="700" fill="#1e3a8a">2、固定划分，才能比较</text>
+    <text x="1005" y="417" font-size="19" fill="#475569">数据、处理规则和种子不变，</text>
+    <text x="1005" y="445" font-size="19" fill="#475569">分组才会保持一致。</text>
+    <rect x="970" y="500" width="390" height="135" rx="22" fill="#fff7ed" stroke="#fb923c" stroke-width="2"/>
+    <text x="1005" y="545" font-size="22" font-weight="700" fill="#9a3412">3、测试题不参与训练</text>
+    <text x="1005" y="582" font-size="19" fill="#475569">脚本检查完全相同的输入；</text>
+    <text x="1005" y="610" font-size="19" fill="#475569">同源、近似内容还需人工分组。</text>
+  </g>
+</svg>

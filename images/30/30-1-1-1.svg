@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="618" viewBox="0 0 900 618" role="img" aria-labelledby="title desc">
+<title id="title">预测位置与损失计算位置</title>
+<desc id="desc">假设答案开头按市、图书馆、分号拆分。预测分号时能使用Prompt和前面的参考答案，不能使用分号或后文。train_on_prompt=False时Prompt的labels为-100，答案位置保留目标编号；训练内部将前一位置预测与后一目标对齐。</desc>
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033;font-size:20px}.title{font-size:28px;font-weight:700}.head{font-size:23px;font-weight:700}.small{font-size:18px;fill:#475569}.strong{font-weight:700}.blue{fill:#1d4ed8}.green{fill:#047857}.orange{fill:#c2410c}.white{fill:#fff}.line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}</style>
+<defs><marker id="blue" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#1d4ed8"/></marker><marker id="green" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#047857"/></marker><marker id="orange" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#c2410c"/></marker><marker id="gray" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#475569"/></marker></defs>
+<rect width="900" height="618" rx="16" fill="#f8fafc"/>
+
+<text x="36" y="48" class="title">预测分号时，模型能看到什么？</text>
+<text x="36" y="80" class="small">教学拆分：[市] [图书馆] [;]；不是实际 tokenizer 输出截图。</text>
+<text x="36" y="130" class="strong blue">可作为这次预测的上下文</text>
+<text x="520" y="130" class="strong orange">当前目标</text>
+<text x="690" y="130" class="strong">后续答案</text>
+<rect x="36" y="148" width="450" height="120" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="56" y="186">用户文章 + 任务说明 + 助手起始标记</text>
+<text x="56" y="232" class="strong blue">再加前面的参考答案：[市] [图书馆]</text>
+<rect x="516" y="148" width="136" height="120" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+<text x="584" y="199" text-anchor="middle" style="font-size:38px;font-weight:700">;</text>
+<text x="584" y="242" text-anchor="middle" class="small">用来检查预测</text>
+<rect x="682" y="148" width="182" height="120" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="5 4"/>
+<text x="700" y="194">儿童阅读课……</text>
+<text x="700" y="232" class="small">不能提前看到</text>
+<path d="M486 208H512" class="line" stroke="#1d4ed8" marker-end="url(#blue)"/>
+<text x="36" y="305" class="strong">当前分号也不能提前看到；训练时的前文答案来自参考答案。</text>
+<path d="M36 330H864" stroke="#cbd5e1"/>
+<text x="36" y="372" class="head">哪些位置直接计入 Loss？</text>
+<text x="36" y="406" class="small">本例 train_on_prompt=False；下方按“目标 token 所在位置”标记。</text>
+<rect x="36" y="428" width="340" height="106" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="56" y="466">Prompt 区域</text>
+<text x="56" y="509" class="strong">labels = -100　不计分</text>
+<rect x="394" y="428" width="470" height="106" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+<text x="414" y="466">助手答案及相关结束标记</text>
+<text x="414" y="509" class="strong green">labels 保留目标编号　参与计分</text>
+<text x="36" y="572" class="small">-100 不会删除输入；训练内部将前一位置的预测与下一个目标对齐。</text>
+<text x="36" y="602" class="small">角色与结束边界以实际模板、预处理为准，不能仅凭这张示意图验证标签。</text>
+</svg>

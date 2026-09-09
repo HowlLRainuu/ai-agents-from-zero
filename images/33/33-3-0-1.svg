@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="866" viewBox="0 0 1200 866" role="img" aria-labelledby="title desc">
+<title id="title">数据并行、张量并行与流水线并行</title>
+<desc id="desc">三个面板：数据并行让两张卡处理不同文章并汇总梯度；张量并行让同一份输入的同层计算分开再组合；流水线并行将前半层结果交给后半层。</desc>
+<defs>
+<marker id="arrow-2563eb" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#2563eb"/></marker>
+<marker id="arrow-7c3aed" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#7c3aed"/></marker>
+<marker id="arrow-059669" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#059669"/></marker>
+</defs>
+<g font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif">
+<rect width="1200" height="866" fill="#f8fafc"/>
+<text x="36" y="48" font-size="32" fill="#0f172a" font-weight="700" text-anchor="start" >多张 GPU，究竟在分担什么？</text>
+<text x="36" y="82" font-size="21" fill="#334155" font-weight="400" text-anchor="start" >先看输入是否相同，再看传递的是梯度，还是中间计算结果。</text>
+<rect x="32" y="108" width="1136" height="220" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+<text x="56" y="151" font-size="27" fill="#1d4ed8" font-weight="700" text-anchor="start" >数据并行 DP</text>
+<text x="56" y="191" font-size="22" fill="#334155" font-weight="400" text-anchor="start" >模型相同</text>
+<text x="56" y="223" font-size="22" fill="#334155" font-weight="400" text-anchor="start" >处理不同文章</text>
+<text x="56" y="267" font-size="18" fill="#64748b" font-weight="400" text-anchor="start" >图示：一次小批处理</text>
+<rect x="308" y="129" width="344" height="77" rx="14" fill="#fff" stroke="#93c5fd"/>
+<text x="328" y="159" font-size="22" fill="#1e40af" font-weight="600" text-anchor="start" >GPU 0 · 同一份模型</text>
+<text x="328" y="189" font-size="21" fill="#334155" font-weight="400" text-anchor="start" >文章 1～4 → 各自计算梯度</text>
+<rect x="308" y="228" width="344" height="77" rx="14" fill="#fff" stroke="#93c5fd"/>
+<text x="328" y="258" font-size="22" fill="#1e40af" font-weight="600" text-anchor="start" >GPU 1 · 同一份模型</text>
+<text x="328" y="288" font-size="21" fill="#334155" font-weight="400" text-anchor="start" >文章 5～8 → 各自计算梯度</text>
+<path d="M 652 168 H 719 V 214 H 812" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-2563eb)"/>
+<path d="M 652 266 H 759 V 225 H 812" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-2563eb)"/>
+<rect x="820" y="168" width="324" height="99" rx="14" fill="#fff" stroke="#93c5fd"/>
+<text x="982" y="204" font-size="26" fill="#1d4ed8" font-weight="700" text-anchor="middle" >汇总梯度</text>
+<text x="982" y="241" font-size="21" fill="#334155" font-weight="400" text-anchor="middle" >两边按一致规则更新参数</text>
+<rect x="32" y="348" width="1136" height="230" rx="14" fill="#f5f3ff" stroke="#ddd6fe"/>
+<text x="56" y="390" font-size="27" fill="#6d28d9" font-weight="700" text-anchor="start" >张量并行 TP</text>
+<text x="56" y="429" font-size="22" fill="#334155" font-weight="400" text-anchor="start" >同一份输入</text>
+<text x="56" y="462" font-size="22" fill="#334155" font-weight="400" text-anchor="start" >合算同一层</text>
+<text x="56" y="539" font-size="18" fill="#64748b" font-weight="400" text-anchor="start" >图示：按输出特征切分</text>
+<rect x="294" y="429" width="138" height="68" rx="14" fill="#fff" stroke="#c4b5fd"/>
+<text x="363" y="470" font-size="22" fill="#6d28d9" font-weight="600" text-anchor="middle" >同一输入</text>
+<path d="M 432 454 H 454 V 407 H 489" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-7c3aed)"/>
+<path d="M 432 472 H 469 V 510 H 489" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-7c3aed)"/>
+<rect x="497" y="371" width="309" height="77" rx="14" fill="#fff" stroke="#c4b5fd"/>
+<text x="517" y="402" font-size="22" fill="#6d28d9" font-weight="600" text-anchor="start" >GPU 0 · 该层的一部分</text>
+<text x="517" y="430" font-size="21" fill="#334155" font-weight="400" text-anchor="start" >计算一部分输出特征</text>
+<rect x="497" y="475" width="309" height="77" rx="14" fill="#fff" stroke="#c4b5fd"/>
+<text x="517" y="506" font-size="21" fill="#6d28d9" font-weight="600" text-anchor="start" >GPU 1 · 该层的另一部分</text>
+<text x="517" y="535" font-size="21" fill="#334155" font-weight="400" text-anchor="start" >计算其余输出特征</text>
+<path d="M 806 410 H 831 V 450 H 876" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-7c3aed)"/>
+<path d="M 806 514 H 850 V 473 H 876" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-7c3aed)"/>
+<rect x="884" y="414" width="260" height="98" rx="14" fill="#fff" stroke="#c4b5fd"/>
+<text x="1014" y="452" font-size="23" fill="#6d28d9" font-weight="600" text-anchor="middle" >按切分方式组合</text>
+<text x="1014" y="487" font-size="21" fill="#334155" font-weight="400" text-anchor="middle" >再继续后续计算</text>
+<rect x="32" y="598" width="1136" height="201" rx="14" fill="#ecfdf5" stroke="#a7f3d0"/>
+<text x="56" y="642" font-size="27" fill="#047857" font-weight="700" text-anchor="start" >流水线并行 PP</text>
+<text x="56" y="682" font-size="22" fill="#334155" font-weight="400" text-anchor="start" >同一份输入</text>
+<text x="56" y="714" font-size="22" fill="#334155" font-weight="400" text-anchor="start" >按模型层接力</text>
+<rect x="308" y="634" width="236" height="99" rx="14" fill="#fff" stroke="#6ee7b7"/>
+<text x="426" y="673" font-size="24" fill="#047857" font-weight="700" text-anchor="middle" >GPU 0</text>
+<text x="426" y="710" font-size="22" fill="#334155" font-weight="400" text-anchor="middle" >前半层</text>
+<text x="612" y="665" font-size="18" fill="#047857" font-weight="500" text-anchor="middle" >中间结果</text>
+<path d="M 544 688 H 680" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-059669)"/>
+<rect x="688" y="634" width="236" height="99" rx="14" fill="#fff" stroke="#6ee7b7"/>
+<text x="806" y="673" font-size="24" fill="#047857" font-weight="700" text-anchor="middle" >GPU 1</text>
+<text x="806" y="710" font-size="22" fill="#334155" font-weight="400" text-anchor="middle" >后半层</text>
+<path d="M 924 688 H 981" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-059669)"/>
+<text x="1000" y="696" font-size="23" fill="#047857" font-weight="600" text-anchor="start" >得到输出</text>
+<text x="308" y="771" font-size="20" fill="#334155" font-weight="400" text-anchor="start" >拆成多份输入交错处理，可以减少等待；完整训练还有反向传播。</text>
+<text x="36" y="839" font-size="22" fill="#0f172a" font-weight="600" text-anchor="start" >普通 DP 不会把模型自动切小；TP、PP 需要模型与训练框架支持相应分工。</text>
+</g>
+</svg>

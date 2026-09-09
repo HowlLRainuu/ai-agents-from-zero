@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="880" viewBox="0 0 1200 880" role="img" aria-labelledby="title desc">
+<title id="title">单卡、两卡数据并行与两卡张量并行的有效批次</title><desc id="desc">单卡4乘1乘8、两卡DP4乘2乘4、两卡TP4乘1乘8均为32；TP两张卡处理同一批文章不能重复计数。</desc>
+<defs><marker id="arrow-2563eb" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#2563eb"/></marker><marker id="arrow-7c3aed" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#7c3aed"/></marker><marker id="arrow-059669" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#059669"/></marker><marker id="arrow-64748b" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#64748b"/></marker></defs>
+<g font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif">
+<rect width="1200" height="880" fill="#f8fafc"/>
+<text x="36" y="52" font-size="33" fill="#0f172a" font-weight="700" text-anchor="start">有效批次：数不同的文章，不是数显卡</text>
+<text x="36" y="91" font-size="23" fill="#334155" font-weight="400" text-anchor="start">同一批输入由多张卡合作计算，只能计数一次。以下三种安排每次更新都用 32 篇。</text>
+<rect x="32" y="122" width="1136" height="200" rx="14" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="56" y="164" font-size="28" fill="#0f172a" font-weight="700" text-anchor="start">单卡</text>
+<rect x="265" y="151" width="412" height="94" rx="14" fill="#fff" stroke="#cbd5e1"/>
+<text x="285" y="185" font-size="24" fill="#334155" font-weight="700" text-anchor="start">GPU 0 · 完整模型</text>
+<text x="285" y="220" font-size="24" fill="#334155" font-weight="400" text-anchor="start">一次处理 4 篇不同文章</text>
+<text x="720" y="187" font-size="28" fill="#0f172a" font-weight="700" text-anchor="start">4 × 1 × 8 = 32 篇</text>
+<text x="720" y="226" font-size="23" fill="#334155" font-weight="400" text-anchor="start">1 组输入，累积 8 次</text>
+<text x="265" y="292" font-size="24" fill="#475569" font-weight="600" text-anchor="start">一次同时处理：4 篇</text>
+<rect x="32" y="344" width="1136" height="200" rx="14" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="56" y="386" font-size="28" fill="#0f172a" font-weight="700" text-anchor="start">两卡 DP</text>
+<rect x="265" y="365" width="412" height="66" rx="14" fill="#fff" stroke="#93c5fd"/>
+<text x="285" y="406" font-size="24" fill="#1d4ed8" font-weight="600" text-anchor="start">GPU 0 · 文章 1～4</text>
+<rect x="265" y="445" width="412" height="66" rx="14" fill="#fff" stroke="#93c5fd"/>
+<text x="285" y="486" font-size="24" fill="#1d4ed8" font-weight="600" text-anchor="start">GPU 1 · 文章 5～8</text>
+<text x="720" y="408" font-size="28" fill="#1d4ed8" font-weight="700" text-anchor="start">4 × 2 × 4 = 32 篇</text>
+<text x="720" y="447" font-size="23" fill="#334155" font-weight="400" text-anchor="start">2 组不同输入，累积 4 次</text>
+<text x="720" y="486" font-size="23" fill="#1d4ed8" font-weight="600" text-anchor="start">一次同时处理：8 篇</text>
+<rect x="32" y="566" width="1136" height="200" rx="14" fill="#f5f3ff" stroke="#c4b5fd"/>
+<text x="56" y="608" font-size="28" fill="#0f172a" font-weight="700" text-anchor="start">两卡 TP</text>
+<text x="470" y="607" font-size="24" fill="#6d28d9" font-weight="700" text-anchor="middle">同一批 4 篇文章</text>
+<path d="M470 614 V622 H360 V635" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-7c3aed)"/>
+<path d="M470 614 V622 H582 V635" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-7c3aed)"/>
+<rect x="265" y="637" width="190" height="65" rx="14" fill="#fff" stroke="#c4b5fd"/>
+<text x="360" y="679" font-size="24" fill="#6d28d9" font-weight="600" text-anchor="middle">GPU 0</text>
+<rect x="487" y="637" width="190" height="65" rx="14" fill="#fff" stroke="#c4b5fd"/>
+<text x="582" y="679" font-size="24" fill="#6d28d9" font-weight="600" text-anchor="middle">GPU 1</text>
+<text x="265" y="739" font-size="23" fill="#334155" font-weight="400" text-anchor="start">合作算同一层，不增加新文章</text>
+<text x="720" y="630" font-size="28" fill="#6d28d9" font-weight="700" text-anchor="start">4 × 1 × 8 = 32 篇</text>
+<text x="720" y="669" font-size="23" fill="#334155" font-weight="400" text-anchor="start">仍是 1 组输入，累积 8 次</text>
+<text x="720" y="708" font-size="23" fill="#6d28d9" font-weight="600" text-anchor="start">一次同时处理：4 篇</text>
+<text x="36" y="811" font-size="25" fill="#0f172a" font-weight="700" text-anchor="start">通用读法：每组一次处理的样本数 × 数据并行组数 × 梯度累积次数</text>
+<text x="36" y="851" font-size="23" fill="#334155" font-weight="400" text-anchor="start">有效批次相同，仍可能有不同的通信开销、速度和训练结果。</text>
+</g></svg>

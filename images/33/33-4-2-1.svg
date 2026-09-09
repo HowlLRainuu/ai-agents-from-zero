@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="754" viewBox="0 0 1200 754" role="img" aria-labelledby="title desc">
+<title id="title">ZeRO各阶段两张GPU的训练状态分片对比</title>
+<desc id="desc">四列依次为不使用ZeRO、Stage1、Stage2、Stage3。Stage1分优化器状态，Stage2再分梯度，Stage3再分参数；颜色只表示状态类别。</desc>
+<defs>
+<marker id="arrow-2563eb" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#2563eb"/></marker>
+<marker id="arrow-7c3aed" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#7c3aed"/></marker>
+<marker id="arrow-059669" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#059669"/></marker>
+</defs>
+<g font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif">
+<rect width="1200" height="754" fill="#f8fafc"/>
+<text x="36" y="48" font-size="31" fill="#0f172a" font-weight="700" text-anchor="start" >ZeRO：哪些训练状态不再每卡重复保存？</text>
+<text x="36" y="82" font-size="21" fill="#334155" font-weight="400" text-anchor="start" >两卡示意：先看完整副本，再看分片 1、分片 2 分别放在哪里。</text>
+<rect x="32" y="112" width="266" height="462" rx="14" fill="#fff" stroke="#dbe4ee"/>
+<text x="165" y="150" font-size="25" fill="#0f172a" font-weight="700" text-anchor="middle" >普通数据并行</text>
+<text x="165" y="182" font-size="20" fill="#475569" font-weight="400" text-anchor="middle" >不使用 ZeRO</text>
+<rect x="44" y="208" width="242" height="154" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="58" y="237" font-size="21" fill="#0f172a" font-weight="600" text-anchor="start" >GPU 0</text>
+<text x="56" y="271" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >参数</text>
+<rect x="104" y="250" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="104" y="250" width="166" height="27" rx="5" fill="#2563eb" stroke="none"/>
+<text x="187" y="270" font-size="18" fill="#fff" font-weight="600" text-anchor="middle" >完整</text>
+<text x="56" y="305" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >梯度</text>
+<rect x="104" y="284" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="104" y="284" width="166" height="27" rx="5" fill="#7c3aed" stroke="none"/>
+<text x="187" y="304" font-size="18" fill="#fff" font-weight="600" text-anchor="middle" >完整</text>
+<text x="56" y="339" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >状态</text>
+<rect x="104" y="318" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="104" y="318" width="166" height="27" rx="5" fill="#c2410c" stroke="none"/>
+<text x="187" y="338" font-size="18" fill="#fff" font-weight="600" text-anchor="middle" >完整</text>
+<rect x="44" y="384" width="242" height="154" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="58" y="413" font-size="21" fill="#0f172a" font-weight="600" text-anchor="start" >GPU 1</text>
+<text x="56" y="447" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >参数</text>
+<rect x="104" y="426" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="104" y="426" width="166" height="27" rx="5" fill="#2563eb" stroke="none"/>
+<text x="187" y="446" font-size="18" fill="#fff" font-weight="600" text-anchor="middle" >完整</text>
+<text x="56" y="481" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >梯度</text>
+<rect x="104" y="460" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="104" y="460" width="166" height="27" rx="5" fill="#7c3aed" stroke="none"/>
+<text x="187" y="480" font-size="18" fill="#fff" font-weight="600" text-anchor="middle" >完整</text>
+<text x="56" y="515" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >状态</text>
+<rect x="104" y="494" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="104" y="494" width="166" height="27" rx="5" fill="#c2410c" stroke="none"/>
+<text x="187" y="514" font-size="18" fill="#fff" font-weight="600" text-anchor="middle" >完整</text>
+<rect x="322" y="112" width="266" height="462" rx="14" fill="#fff" stroke="#dbe4ee"/>
+<text x="455" y="150" font-size="25" fill="#0f172a" font-weight="700" text-anchor="middle" >Stage 1</text>
+<text x="455" y="182" font-size="20" fill="#475569" font-weight="400" text-anchor="middle" >分优化器状态</text>
+<rect x="334" y="208" width="242" height="154" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="348" y="237" font-size="21" fill="#0f172a" font-weight="600" text-anchor="start" >GPU 0</text>
+<text x="346" y="271" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >参数</text>
+<rect x="394" y="250" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="394" y="250" width="166" height="27" rx="5" fill="#2563eb" stroke="none"/>
+<text x="477" y="270" font-size="18" fill="#fff" font-weight="600" text-anchor="middle" >完整</text>
+<text x="346" y="305" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >梯度</text>
+<rect x="394" y="284" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="394" y="284" width="166" height="27" rx="5" fill="#7c3aed" stroke="none"/>
+<text x="477" y="304" font-size="18" fill="#fff" font-weight="600" text-anchor="middle" >完整</text>
+<text x="346" y="339" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >状态</text>
+<rect x="394" y="318" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="394" y="318" width="83" height="27" rx="5" fill="#c2410c" stroke="none"/>
+<text x="435.5" y="338" font-size="17" fill="#fff" font-weight="600" text-anchor="middle" >分片 1</text>
+<rect x="334" y="384" width="242" height="154" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="348" y="413" font-size="21" fill="#0f172a" font-weight="600" text-anchor="start" >GPU 1</text>
+<text x="346" y="447" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >参数</text>
+<rect x="394" y="426" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="394" y="426" width="166" height="27" rx="5" fill="#2563eb" stroke="none"/>
+<text x="477" y="446" font-size="18" fill="#fff" font-weight="600" text-anchor="middle" >完整</text>
+<text x="346" y="481" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >梯度</text>
+<rect x="394" y="460" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="394" y="460" width="166" height="27" rx="5" fill="#7c3aed" stroke="none"/>
+<text x="477" y="480" font-size="18" fill="#fff" font-weight="600" text-anchor="middle" >完整</text>
+<text x="346" y="515" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >状态</text>
+<rect x="394" y="494" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="477" y="494" width="83" height="27" rx="5" fill="#c2410c" stroke="none"/>
+<text x="518.5" y="514" font-size="17" fill="#fff" font-weight="600" text-anchor="middle" >分片 2</text>
+<rect x="612" y="112" width="266" height="462" rx="14" fill="#fff" stroke="#dbe4ee"/>
+<text x="745" y="150" font-size="25" fill="#0f172a" font-weight="700" text-anchor="middle" >Stage 2</text>
+<text x="745" y="182" font-size="20" fill="#475569" font-weight="400" text-anchor="middle" >再分梯度</text>
+<rect x="624" y="208" width="242" height="154" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="638" y="237" font-size="21" fill="#0f172a" font-weight="600" text-anchor="start" >GPU 0</text>
+<text x="636" y="271" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >参数</text>
+<rect x="684" y="250" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="684" y="250" width="166" height="27" rx="5" fill="#2563eb" stroke="none"/>
+<text x="767" y="270" font-size="18" fill="#fff" font-weight="600" text-anchor="middle" >完整</text>
+<text x="636" y="305" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >梯度</text>
+<rect x="684" y="284" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="684" y="284" width="83" height="27" rx="5" fill="#7c3aed" stroke="none"/>
+<text x="725.5" y="304" font-size="17" fill="#fff" font-weight="600" text-anchor="middle" >分片 1</text>
+<text x="636" y="339" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >状态</text>
+<rect x="684" y="318" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="684" y="318" width="83" height="27" rx="5" fill="#c2410c" stroke="none"/>
+<text x="725.5" y="338" font-size="17" fill="#fff" font-weight="600" text-anchor="middle" >分片 1</text>
+<rect x="624" y="384" width="242" height="154" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="638" y="413" font-size="21" fill="#0f172a" font-weight="600" text-anchor="start" >GPU 1</text>
+<text x="636" y="447" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >参数</text>
+<rect x="684" y="426" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="684" y="426" width="166" height="27" rx="5" fill="#2563eb" stroke="none"/>
+<text x="767" y="446" font-size="18" fill="#fff" font-weight="600" text-anchor="middle" >完整</text>
+<text x="636" y="481" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >梯度</text>
+<rect x="684" y="460" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="767" y="460" width="83" height="27" rx="5" fill="#7c3aed" stroke="none"/>
+<text x="808.5" y="480" font-size="17" fill="#fff" font-weight="600" text-anchor="middle" >分片 2</text>
+<text x="636" y="515" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >状态</text>
+<rect x="684" y="494" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="767" y="494" width="83" height="27" rx="5" fill="#c2410c" stroke="none"/>
+<text x="808.5" y="514" font-size="17" fill="#fff" font-weight="600" text-anchor="middle" >分片 2</text>
+<rect x="902" y="112" width="266" height="462" rx="14" fill="#fff" stroke="#dbe4ee"/>
+<text x="1035" y="150" font-size="25" fill="#0f172a" font-weight="700" text-anchor="middle" >Stage 3</text>
+<text x="1035" y="182" font-size="20" fill="#475569" font-weight="400" text-anchor="middle" >再分模型参数</text>
+<rect x="914" y="208" width="242" height="154" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="928" y="237" font-size="21" fill="#0f172a" font-weight="600" text-anchor="start" >GPU 0</text>
+<text x="926" y="271" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >参数</text>
+<rect x="974" y="250" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="974" y="250" width="83" height="27" rx="5" fill="#2563eb" stroke="none"/>
+<text x="1015.5" y="270" font-size="17" fill="#fff" font-weight="600" text-anchor="middle" >分片 1</text>
+<text x="926" y="305" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >梯度</text>
+<rect x="974" y="284" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="974" y="284" width="83" height="27" rx="5" fill="#7c3aed" stroke="none"/>
+<text x="1015.5" y="304" font-size="17" fill="#fff" font-weight="600" text-anchor="middle" >分片 1</text>
+<text x="926" y="339" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >状态</text>
+<rect x="974" y="318" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="974" y="318" width="83" height="27" rx="5" fill="#c2410c" stroke="none"/>
+<text x="1015.5" y="338" font-size="17" fill="#fff" font-weight="600" text-anchor="middle" >分片 1</text>
+<rect x="914" y="384" width="242" height="154" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="928" y="413" font-size="21" fill="#0f172a" font-weight="600" text-anchor="start" >GPU 1</text>
+<text x="926" y="447" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >参数</text>
+<rect x="974" y="426" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="1057" y="426" width="83" height="27" rx="5" fill="#2563eb" stroke="none"/>
+<text x="1098.5" y="446" font-size="17" fill="#fff" font-weight="600" text-anchor="middle" >分片 2</text>
+<text x="926" y="481" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >梯度</text>
+<rect x="974" y="460" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="1057" y="460" width="83" height="27" rx="5" fill="#7c3aed" stroke="none"/>
+<text x="1098.5" y="480" font-size="17" fill="#fff" font-weight="600" text-anchor="middle" >分片 2</text>
+<text x="926" y="515" font-size="19" fill="#475569" font-weight="400" text-anchor="start" >状态</text>
+<rect x="974" y="494" width="166" height="27" rx="5" fill="#e2e8f0" stroke="none"/>
+<rect x="1057" y="494" width="83" height="27" rx="5" fill="#c2410c" stroke="none"/>
+<text x="1098.5" y="514" font-size="17" fill="#fff" font-weight="600" text-anchor="middle" >分片 2</text>
+<text x="36" y="610" font-size="20" fill="#334155" font-weight="400" text-anchor="start" >参数 = 模型权重；梯度 = 更新方向信息；状态 = 优化器为后续更新保存的信息。</text>
+<rect x="32" y="636" width="1136" height="95" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+<text x="54" y="672" font-size="23" fill="#1e40af" font-weight="600" text-anchor="start" >Stage 3 计算时按需聚合参数，不等于 TP 的“把同一层计算拆开”。</text>
+<text x="54" y="709" font-size="21" fill="#334155" font-weight="400" text-anchor="start" >图中不含激活值与临时缓冲区；色块不是字节比例，全部显存不会简单除以卡数。</text>
+</g>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="690" viewBox="0 0 900 690" role="img" aria-labelledby="title desc">
+<title id="title">LoRA 的两条计算路径</title>
+<desc id="desc">单个线性层的教学尺寸：原权重1000乘1000冻结。新增路径先经8乘1000的A将1000个数变为8个数，再经1000乘8的B变回1000个数。两路输出相加。暂不画alpha缩放。</desc>
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033;font-size:20px}.title{font-size:28px;font-weight:700}.head{font-size:23px;font-weight:700}.small{font-size:18px;fill:#475569}.strong{font-weight:700}.blue{fill:#1d4ed8}.green{fill:#047857}.orange{fill:#c2410c}.white{fill:#fff}.line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}</style>
+<defs><marker id="blue" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#1d4ed8"/></marker><marker id="green" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#047857"/></marker><marker id="orange" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#c2410c"/></marker><marker id="gray" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#475569"/></marker></defs>
+<rect width="900" height="690" rx="16" fill="#f8fafc"/>
+
+<text x="36" y="48" class="title">LoRA：原路径与新增路径怎样相加</text>
+<text x="36" y="80" class="small">只画一个线性层；尺寸为教学算例，暂不加入 alpha/r 缩放。</text>
+<rect x="36" y="265" width="132" height="106" rx="12" fill="#fff" stroke="#94a3b8"/>
+<text x="56" y="304" class="head">输入 x</text><text x="56" y="341">1,000 个数</text>
+<rect x="268" y="135" width="282" height="142" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="290" y="174" class="head">基础权重 W₀</text>
+<text x="290" y="209">1,000 × 1,000</text>
+<text x="290" y="248" class="strong blue">冻结：参与计算，不更新</text>
+<path d="M168 291H210V206H264" class="line" stroke="#1d4ed8" marker-end="url(#blue)"/>
+<path d="M550 206H658V299H707" class="line" stroke="#1d4ed8" marker-end="url(#blue)"/>
+<text x="573" y="177" class="blue">W₀ × x</text>
+<rect x="245" y="392" width="166" height="144" rx="12" fill="#ecfdf5" stroke="#6ee7b7"/>
+<text x="267" y="430" class="head">矩阵 A</text>
+<text x="267" y="465">8 × 1,000</text><text x="267" y="509" class="small">8,000 个参数</text>
+<rect x="532" y="392" width="166" height="144" rx="12" fill="#ecfdf5" stroke="#6ee7b7"/>
+<text x="554" y="430" class="head">矩阵 B</text>
+<text x="554" y="465">1,000 × 8</text><text x="554" y="509" class="small">8,000 个参数</text>
+<path d="M168 343H206V464H241" class="line" stroke="#047857" marker-end="url(#green)"/>
+<path d="M411 464H528" class="line" stroke="#047857" marker-end="url(#green)"/>
+<text x="470" y="431" text-anchor="middle" class="strong green">8 个数</text>
+<text x="470" y="503" text-anchor="middle" class="small">中间宽度 r</text>
+<path d="M698 464H766V364" class="line" stroke="#047857" marker-end="url(#green)"/>
+<text x="710" y="507" class="small green">输出 1,000 个数</text>
+<rect x="712" y="268" width="146" height="92" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+<text x="785" y="305" text-anchor="middle" class="head">两路相加</text>
+<text x="785" y="338" text-anchor="middle">输出 h</text>
+<text x="704" y="238" class="small">两路输出长度相同</text>
+<text x="245" y="574" class="strong green">新增路径：只训练 A、B，共 16,000 个参数</text>
+<text x="36" y="620" class="strong">原路径 1,000 个数 + 新增路径 1,000 个数 = 输出 1,000 个数</text>
+<text x="36" y="657" class="small">相加的是两路计算结果；原权重仍保留，不能据此推算整场训练的显存比例。</text>
+</svg>

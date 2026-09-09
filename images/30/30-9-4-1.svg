@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="650" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+<title id="title">Adapter 的两种使用方式</title>
+<desc id="desc">同一份匹配的基础权重和Adapter可以选择分开加载，或在支持的配置下合并导出。两者为并列选择，不是必须先后执行的步骤。</desc>
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033;font-size:20px}.title{font-size:28px;font-weight:700}.head{font-size:23px;font-weight:700}.small{font-size:18px;fill:#475569}.strong{font-weight:700}.blue{fill:#1d4ed8}.green{fill:#047857}.orange{fill:#c2410c}.white{fill:#fff}.line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}</style>
+<defs><marker id="blue" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#1d4ed8"/></marker><marker id="green" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#047857"/></marker><marker id="orange" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#c2410c"/></marker><marker id="gray" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#475569"/></marker></defs>
+<rect width="900" height="650" rx="16" fill="#f8fafc"/>
+
+<text x="36" y="48" class="title">Adapter 的两种使用方式</text>
+<text x="36" y="80" class="small">下面是并列选择，不是“先完成方式一，再执行方式二”。</text>
+<rect x="180" y="108" width="540" height="104" rx="12" fill="#fff" stroke="#94a3b8"/>
+<text x="450" y="148" text-anchor="middle" class="head">训练时的基础权重 + 对应 Adapter</text>
+<text x="450" y="184" text-anchor="middle">Adapter 只保存新增参数，不能单独当完整模型使用。</text>
+<path d="M450 212V247H242V285" class="line" stroke="#1d4ed8" marker-end="url(#blue)"/>
+<path d="M450 247H658V285" class="line" stroke="#047857" marker-end="url(#green)"/>
+<rect x="36" y="290" width="396" height="260" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="60" y="333" class="head">方式一：分开加载</text>
+<rect x="60" y="360" width="174" height="62" rx="10" fill="#fff" stroke="#93c5fd"/>
+<text x="147" y="400" text-anchor="middle">基础模型</text>
+<text x="252" y="400" text-anchor="middle" class="head">+</text>
+<rect x="273" y="360" width="135" height="62" rx="10" fill="#ecfdf5" stroke="#6ee7b7"/>
+<text x="340" y="400" text-anchor="middle">Adapter</text>
+<text x="60" y="463">推理时一起加载、共同计算。</text>
+<text x="60" y="500" class="small">便于切换与同一基础模型匹配的 Adapter。</text>
+<rect x="468" y="290" width="396" height="260" rx="12" fill="#ecfdf5" stroke="#6ee7b7"/>
+<text x="492" y="333" class="head">方式二：合并导出</text>
+<rect x="492" y="360" width="348" height="62" rx="10" fill="#fff" stroke="#6ee7b7"/>
+<text x="666" y="400" text-anchor="middle">合并后的完整模型权重</text>
+<text x="492" y="463">在支持的配置下，把增量加回基础权重。</text>
+<text x="492" y="500" class="small">导出后可按完整模型路径加载。</text>
+<text x="36" y="594" class="strong">两种方式都要求：Adapter 与训练时使用的基础模型相匹配。</text>
+<text x="36" y="627" class="small">本图只说明产物关系，不代表当前实验已经完成合并或部署。</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="682" viewBox="0 0 1100 682" role="img" aria-labelledby="title desc">
+  <title id="title">同一条消息，经对话模板处理后变成什么？</title>
+  <desc id="desc">左侧是图书馆教学样本中的用户与助手消息，右侧是Qwen3官方模板处理后的完整训练文本。角色边界和空思考区块由模板添加，文章与参考答案保持不变。为了排版增加的视觉折行不代表新增换行字符。模板与分词结果共51个token；仅用户消息加回答起始提示的推理输入为40个token。本图不是模型生成结果。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10" fill="#3478cb"/></marker></defs>
+  <style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#18324d}.title{font-size:29px;font-weight:700}.head{font-size:23px;font-weight:600}.body{font-size:21px}.small{font-size:18px;fill:#526479}.code{font-family:Menlo,Consolas,monospace;font-size:20px;fill:#2367ad}.green{fill:#167551}.tag{font-family:Menlo,Consolas,monospace;font-size:19px;fill:#8a5b16}</style>
+  <rect width="1100" height="682" rx="18" fill="#f5f8fc"/>
+  <text x="26" y="45" class="title">同一条消息，经对话模板处理后变成什么？</text>
+  <text x="26" y="78" class="small">图书馆教学样本 · Qwen3-0.6B 官方模板 · enable_thinking=False</text>
+  <rect x="24" y="101" width="474" height="491" rx="12" fill="white" stroke="#c8d9eb"/>
+  <rect x="572" y="101" width="504" height="491" rx="12" fill="white" stroke="#c8d9eb"/>
+  <text x="45" y="140" class="head">转换前：读出 role / content 消息</text>
+  <text x="593" y="140" class="head">转换后：带有边界标记的训练文本</text>
+  <rect x="43" y="163" width="436" height="211" rx="9" fill="#edf5ff"/>
+  <text x="59" y="194" class="code">role: user</text>
+  <text x="59" y="232" class="body">市图书馆周末开设儿童阅读课，</text>
+  <text x="59" y="263" class="body">读者可通过公众号预约。</text>
+  <text x="59" y="309" class="body">请提取关键词，只输出关键词，</text>
+  <text x="59" y="340" class="body">并使用英文分号分隔。</text>
+  <rect x="43" y="397" width="436" height="124" rx="9" fill="#ecf8f1"/>
+  <text x="59" y="428" class="code green">role: assistant</text>
+  <text x="59" y="470" class="body green">市图书馆;儿童阅读课;公众号预约</text>
+  <text x="45" y="562" class="small">答案已经在样本里，不由模板生成。</text>
+  <path d="M507 339H562" stroke="#3478cb" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="510" y="305" class="small">套用</text><text x="510" y="328" class="small">模板</text>
+  <rect x="590" y="159" width="468" height="213" rx="8" fill="#edf5ff"/>
+  <text x="606" y="188" class="code">&lt;|im_start|&gt;user</text>
+  <text x="606" y="223" class="body">市图书馆周末开设儿童阅读课，</text>
+  <text x="606" y="252" class="body">读者可通过公众号预约。</text>
+  <text x="606" y="292" class="body">请提取关键词，只输出关键词，</text>
+  <text x="606" y="321" class="body">并使用英文分号分隔。</text>
+  <text x="606" y="351" class="code">&lt;|im_end|&gt;</text>
+  <text x="606" y="402" class="code">&lt;|im_start|&gt;assistant</text>
+  <rect x="591" y="412" width="466" height="74" rx="8" fill="#fff6e9"/>
+  <text x="606" y="437" class="tag">&lt;think&gt;</text>
+  <text x="606" y="474" class="tag">&lt;/think&gt;</text>
+  <text x="796" y="455" class="small">空区块，没有思考正文</text>
+  <rect x="591" y="499" width="466" height="75" rx="8" fill="#ecf8f1"/>
+  <text x="606" y="529" class="body green">市图书馆;儿童阅读课;公众号预约</text>
+  <text x="606" y="559" class="code">&lt;|im_end|&gt;</text>
+  <text x="28" y="626" class="body">蓝色：用户消息　绿色：参考答案　橙色：模板添加的空思考区块</text>
+  <text x="28" y="658" class="small">文章和答案没有改写；折行仅为便于阅读。实际文本及空行可用正文代码打印核对。</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="730" viewBox="0 0 900 730" role="img" aria-labelledby="title desc">
+<title id="title">一条样本如何参与参数更新</title>
+<desc id="desc">图书馆样本提供输入与参考答案。前向计算预测，交叉熵得到损失，反向传播求梯度，优化器更新可训练参数。实线表示执行顺序；虚线表示用更新后的参数继续计算，不是修改样本。</desc>
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033;font-size:20px}.title{font-size:28px;font-weight:700}.head{font-size:23px;font-weight:700}.small{font-size:18px;fill:#475569}.strong{font-weight:700}.blue{fill:#1d4ed8}.green{fill:#047857}.orange{fill:#c2410c}.white{fill:#fff}.line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}</style>
+<defs><marker id="blue" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#1d4ed8"/></marker><marker id="green" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#047857"/></marker><marker id="orange" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#c2410c"/></marker><marker id="gray" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#475569"/></marker></defs>
+<rect width="900" height="730" rx="16" fill="#f8fafc"/>
+
+<text x="36" y="48" class="title">一条样本如何参与参数更新</text>
+<text x="36" y="80" class="small">先算预测和损失，再求梯度，最后更新参数。</text>
+<rect x="36" y="106" width="828" height="128" rx="12" fill="#fff" stroke="#cbd5e1"/>
+<text x="56" y="140" class="head">① 输入与参考答案</text>
+<text x="476" y="140" class="small">任务：提取关键词，用英文分号分隔</text>
+<text x="56" y="176">文章：市图书馆周末开设儿童阅读课，读者可通过公众号预约。</text>
+<text x="56" y="210" class="green">答案：市图书馆;儿童阅读课;公众号预约</text>
+<path d="M162 234V278" class="line" stroke="#1d4ed8" marker-end="url(#blue)"/>
+<rect x="36" y="282" width="252" height="218" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="56" y="322" class="head">② 前向计算</text>
+<text x="56" y="364">根据前文预测下个 token</text>
+<text x="56" y="403" class="small">例如：该预测分号时，</text>
+<text x="56" y="432" class="small">计算各候选项的概率。</text>
+<text x="56" y="475" class="strong blue">得到：预测结果</text>
+<path d="M290 386H322" class="line" stroke="#475569" marker-end="url(#gray)"/>
+<rect x="326" y="282" width="248" height="218" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+<text x="346" y="322" class="head">③ 计算损失</text>
+<text x="346" y="364">用交叉熵对照正确项</text>
+<text x="346" y="403" class="small">正确项概率低，损失大。</text>
+<text x="346" y="432" class="small">只汇总需计分的位置。</text>
+<text x="346" y="475" class="strong orange">得到：Loss</text>
+<path d="M576 386H608" class="line" stroke="#475569" marker-end="url(#gray)"/>
+<rect x="612" y="282" width="252" height="218" rx="12" fill="#ecfdf5" stroke="#6ee7b7"/>
+<text x="632" y="322" class="head">④ 反向传播</text>
+<text x="632" y="364">从损失往回计算梯度</text>
+<text x="632" y="403" class="small">参数稍变，损失怎样变？</text>
+<text x="632" y="432" class="small">此时还没有更新参数。</text>
+<text x="632" y="475" class="strong green">得到：Gradient 梯度</text>
+<path d="M738 500V542" class="line" stroke="#047857" marker-end="url(#green)"/>
+<rect x="112" y="546" width="752" height="114" rx="12" fill="#fff" stroke="#94a3b8"/>
+<text x="136" y="582" class="head">⑤ 优化器更新可训练参数</text>
+<text x="136" y="617">Optimizer 按梯度、学习率和自身规则执行更新。</text>
+<text x="136" y="647" class="small">再用更新后的参数，继续处理后续样本。</text>
+<path d="M112 603H18V398H32" class="line" stroke="#475569" stroke-dasharray="6 6" marker-end="url(#gray)"/>
+<text x="36" y="698" class="small">实线：步骤顺序　虚线：继续训练；实际可按批处理、累积梯度后再更新。</text>
+</svg>

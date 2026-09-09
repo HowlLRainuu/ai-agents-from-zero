@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="810" viewBox="0 0 1200 810" role="img" aria-labelledby="title desc">
+  <title id="title">找得准，不等于找得全</title>
+  <desc id="desc">图书馆教学样本的参考答案有三个词，预测有两个词，两者都命中，但遗漏公众号预约。因此精确率为百分之一百，召回率为三分之二，F1为0.8。不是实测结果。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L12 6 L0 12Z" fill="#475569"/></marker>
+    <style>
+      text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#172b4d}
+      .title{font-size:32px;font-weight:700}.sub{font-size:19px;fill:#52637a}
+      .head{font-size:23px;font-weight:700}.body{font-size:21px}.small{font-size:18px}
+      .number{font-size:30px;font-weight:700}.line{fill:none;stroke:#475569;stroke-width:2.5}
+    </style>
+  </defs>
+  <rect width="1200" height="810" rx="20" fill="#f8fafc"/>
+  <text x="48" y="56" class="title">找得准，不等于找得全</text>
+  <text x="48" y="91" class="sub">沿用图书馆教学样本：先找命中与遗漏，再计算指标。以下不是模型实测结果。</text>
+
+  <rect x="48" y="123" width="532" height="139" rx="16" fill="#eff6ff" stroke="#93b5f7" stroke-width="2"/>
+  <text x="74" y="164" class="head">参考答案：3 个词</text>
+  <text x="74" y="205" class="body">市图书馆;儿童阅读课;公众号预约</text>
+  <text x="74" y="238" class="small">这一条记录希望保留的主题信息</text>
+  <rect x="620" y="123" width="532" height="139" rx="16" fill="#ecfdf5" stroke="#6ebda5" stroke-width="2"/>
+  <text x="646" y="164" class="head">假设模型预测：2 个词</text>
+  <text x="646" y="205" class="body">市图书馆;儿童阅读课</text>
+  <text x="646" y="238" class="small">输出的两个词都命中，但没有找全</text>
+
+  <path d="M314 264 V289 H600 M886 264 V289 H600 M600 289 V316" class="line" marker-end="url(#arrow)"/>
+  <rect x="48" y="326" width="1104" height="144" rx="16" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="74" y="362" class="head">对照参考答案，逐词比对</text>
+  <line x1="428" y1="383" x2="428" y2="450" stroke="#e2e8f0"/>
+  <line x1="798" y1="383" x2="798" y2="450" stroke="#e2e8f0"/>
+  <text x="74" y="410" class="head" style="fill:#166b57">命中 2 个</text>
+  <text x="74" y="445" class="body">市图书馆、儿童阅读课</text>
+  <text x="457" y="410" class="head" style="fill:#a75514">漏掉 1 个</text>
+  <text x="457" y="445" class="body">公众号预约</text>
+  <text x="828" y="410" class="head" style="fill:#6d46a5">多出 0 个</text>
+  <text x="828" y="445" class="body">没有未命中的预测词</text>
+
+  <rect x="48" y="503" width="350" height="178" rx="16" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="72" y="544" class="head">精确率 Precision</text>
+  <text x="72" y="580" class="small">命中数 ÷ 预测词数</text>
+  <text x="72" y="626" class="number">2 ÷ 2 = 100%</text>
+  <text x="72" y="659" class="small">选出的词，有多少命中？</text>
+  <rect x="425" y="503" width="350" height="178" rx="16" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="449" y="544" class="head">召回率 Recall</text>
+  <text x="449" y="580" class="small">命中数 ÷ 参考词数</text>
+  <text x="449" y="626" class="number">2 ÷ 3 ≈ 66.7%</text>
+  <text x="449" y="659" class="small">参考中的词，找回了多少？</text>
+  <rect x="802" y="503" width="350" height="178" rx="16" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="826" y="544" class="head">F1</text>
+  <text x="826" y="580" class="small">2 × P × R ÷ (P + R)</text>
+  <text x="826" y="626" class="number">0.8</text>
+  <text x="826" y="659" class="small">兼顾“准”和“全”，不是合格线</text>
+
+  <text x="48" y="728" class="small">这里按词语精确匹配；简称、近义词不会自动命中。格式另外检查，不能通过改写预测提高分数。</text>
+  <text x="48" y="762" class="small">这是单条 F1。Macro F1 是各条样本 F1 的平均值，不是“有多少篇文章完全答对”。</text>
+</svg>

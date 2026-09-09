@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="660" viewBox="0 0 900 660" role="img" aria-labelledby="title desc">
+<title id="title">填充与截断的区别</title>
+<desc id="desc">教学示意。120 token样本和200 token样本同批，按最长样本补齐时前者添加80个填充位置，填充不参与损失。2300 token完整序列在2048上限内无法全部保留，具体截去哪里取决于预处理，不代表固定只截答案尾部。</desc>
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033;font-size:20px}.title{font-size:28px;font-weight:700}.head{font-size:23px;font-weight:700}.small{font-size:18px;fill:#475569}.strong{font-weight:700}.blue{fill:#1d4ed8}.green{fill:#047857}.orange{fill:#c2410c}.white{fill:#fff}.line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}</style>
+<defs><marker id="blue" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#1d4ed8"/></marker><marker id="green" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#047857"/></marker><marker id="orange" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#c2410c"/></marker><marker id="gray" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#475569"/></marker></defs>
+<rect width="900" height="660" rx="16" fill="#f8fafc"/>
+
+<text x="36" y="48" class="title">填充是补齐，截断是放不下</text>
+<text x="36" y="80" class="small">以下为教学示意；不是本次训练的实测长度或实际截断结果。</text>
+<rect x="36" y="106" width="828" height="242" rx="12" fill="#fff" stroke="#cbd5e1"/>
+<text x="58" y="148" class="head">填充：两条样本按本批最长的 200 个位置对齐</text>
+<text x="58" y="198" class="small">样本 A</text>
+<rect x="162" y="174" width="360" height="42" fill="#dbeafe"/>
+<rect x="522" y="174" width="240" height="42" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="5 4"/>
+<text x="342" y="203" text-anchor="middle">原有 120 token</text><text x="642" y="203" text-anchor="middle">填充 80 个位置</text>
+<text x="58" y="256" class="small">样本 B</text>
+<rect x="162" y="232" width="600" height="42" fill="#dbeafe"/>
+<text x="462" y="261" text-anchor="middle">原有 200 token，无需补齐</text>
+<text x="58" y="318" class="small">填充不是新答案，不计入 Loss；短样本不一定都补到 cutoff_len。</text>
+<rect x="36" y="370" width="828" height="246" rx="12" fill="#fff" stroke="#cbd5e1"/>
+<text x="58" y="412" class="head">截断：完整序列超过 2,048 token 的上限</text>
+<rect x="58" y="436" width="340" height="76" rx="10" fill="#fff7ed" stroke="#fdba74"/>
+<text x="228" y="467" text-anchor="middle">文章 + 指令 + 模板 + 答案</text>
+<text x="228" y="497" text-anchor="middle" class="strong orange">合计 2,300 token</text>
+<path d="M400 474H464" class="line" stroke="#c2410c" marker-end="url(#orange)"/>
+<rect x="468" y="436" width="372" height="76" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+<text x="654" y="467" text-anchor="middle">最多保留 2,048 token</text>
+<text x="654" y="497" text-anchor="middle" class="strong">无法完整容纳，需检查保留内容</text>
+<text x="58" y="552">可能影响文章，也可能影响答案，取决于工具的预处理规则。</text>
+<text x="58" y="588" class="small">需要核对实际 input_ids / labels，不能默认“只删文章末尾”。</text>
+<text x="36" y="645" class="small">上图是按本批最长样本填充的例子；下图不表示工具的具体截断分配方法。</text>
+</svg>

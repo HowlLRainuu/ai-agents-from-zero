@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="660" viewBox="0 0 980 660" role="img" aria-labelledby="title desc">
+  <title id="title">上传的文件，怎样出现在数据集下拉框中？</title>
+  <desc id="desc">WebUI 的数据路径为 data/keywords-clean。工具读取该目录的 dataset_info.json，在 keywords_train 登记项中找到 file_name 指向的 keywords_train.jsonl，并按 ShareGPT 角色映射读取样本。页面选择登记名 keywords_train，预览数量应为1600。验证集单独配置，测试集不参加本轮训练。</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 9 5 0 10" fill="none" stroke="#37698d" stroke-width="1.5"/></marker></defs>
+  <rect width="980" height="660" rx="16" fill="#f8fafc"/>
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif" fill="#18354a">
+    <text x="36" y="47" font-size="28" font-weight="600">上传的文件，怎样出现在数据集下拉框中？</text>
+    <text x="36" y="83" font-size="18" fill="#536c7c">跟着训练集走一遍：文件夹 → 登记表 → 文件 → 页面预览</text>
+    <rect x="36" y="111" width="422" height="120" rx="10" fill="#e9f2fb" stroke="#adc8e4"/>
+    <text x="57" y="143" font-size="21" font-weight="600">① 数据路径：告诉工具去哪里找</text>
+    <text x="57" y="184" font-size="23" font-family="Menlo, monospace">data/keywords-clean</text>
+    <text x="57" y="214" font-size="17">填写文件夹，不是某个 .jsonl 文件</text>
+    <path d="M470 172H510" stroke="#37698d" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+    <rect x="526" y="111" width="418" height="230" rx="10" fill="white" stroke="#adc8e4"/>
+    <text x="548" y="145" font-size="21" font-weight="600">② 读取该目录的登记表</text>
+    <text x="548" y="180" font-size="22" font-family="Menlo, monospace">dataset_info.json</text>
+    <text x="548" y="222" font-size="18" font-family="Menlo, monospace">"keywords_train": {</text>
+    <text x="567" y="251" font-size="18" font-family="Menlo, monospace">"file_name":</text>
+    <text x="567" y="280" font-size="18" font-family="Menlo, monospace">"keywords_train.jsonl"</text>
+    <text x="548" y="309" font-size="18" font-family="Menlo, monospace">}</text>
+    <rect x="36" y="276" width="422" height="65" rx="8" fill="#eff3f7"/>
+    <text x="55" y="303" font-size="18" font-weight="600">登记名 ≠ 文件名</text>
+    <text x="55" y="328" font-size="16">不用再上传一个叫 keywords_train 的文件。</text>
+    <path d="M733 355V394" stroke="#37698d" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+    <rect x="526" y="411" width="418" height="154" rx="10" fill="#edf6f0" stroke="#b6d3c1"/>
+    <text x="548" y="445" font-size="21" font-weight="600">③ file_name 指向实际文件</text>
+    <text x="548" y="487" font-size="21" font-family="Menlo, monospace">keywords_train.jsonl</text>
+    <text x="548" y="523" font-size="18">读取 conversations 中的 user / assistant</text>
+    <text x="548" y="549" font-size="17">角色映射也由登记表提供</text>
+    <path d="M510 483H470" stroke="#37698d" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+    <rect x="36" y="411" width="422" height="154" rx="10" fill="#fff4e5" stroke="#e3c596"/>
+    <text x="57" y="445" font-size="21" font-weight="600">④ 在页面选登记名，再预览</text>
+    <text x="57" y="487" font-size="23" font-family="Menlo, monospace">keywords_train</text>
+    <text x="57" y="526" font-size="20">预览数量：1600　角色：user → assistant</text>
+    <text x="36" y="615" font-size="19">训练页只选 keywords_train；验证集单独设置，测试集不加入本轮训练。</text>
+  </g>
+</svg>

@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="680" viewBox="0 0 1100 680" role="img" aria-labelledby="title desc">
+<title id="title">每批处理几条，与处理几批才更新，是两件事</title>
+<desc id="desc">单卡教学示意。蓝色一行有8个小批，每批4条；绿色一行有16个小批，每批2条。小批沿箭头依次处理，整组内权重保持不变，梯度逐批累积。每组处理32条之后才更新一次参数；下一组使用新参数。32条没有同时进入GPU。两种安排有效批次相同，但不保证速度或训练结果相同。</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#526278"/></marker></defs>
+<rect width="1100" height="680" fill="#ffffff"/>
+<g font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif" fill="#172b4d">
+<text x="30" y="48" font-size="35" fill="#172b4d" font-weight="700" text-anchor="start">每批处理几条，和处理几批才更新，是两件事</text>
+<text x="30" y="88" font-size="25" fill="#526278" font-weight="400" text-anchor="start">每个小框是一批，框内数字是条数；沿箭头依次处理。</text>
+<g id="arrangement-A" data-batch-size="4" data-accumulation="8">
+<rect x="20" y="116" width="1060" height="202" rx="15" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="40" y="158" font-size="29" fill="#2563eb" font-weight="700" text-anchor="start">安排 A：每批 4 条，累积 8 批</text>
+<g data-batch="1" data-samples="4"><rect x="40.0" y="186" width="74.0" height="55" rx="6" fill="white" stroke="#2563eb" stroke-width="1.6"/>
+<text x="77.0" y="223" font-size="28" fill="#2563eb" font-weight="700" text-anchor="middle">4</text>
+</g>
+<path d="M116.0 213 L134.0 213" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="2" data-samples="4"><rect x="136.0" y="186" width="74.0" height="55" rx="6" fill="white" stroke="#2563eb" stroke-width="1.6"/>
+<text x="173.0" y="223" font-size="28" fill="#2563eb" font-weight="700" text-anchor="middle">4</text>
+</g>
+<path d="M212.0 213 L230.0 213" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="3" data-samples="4"><rect x="232.0" y="186" width="74.0" height="55" rx="6" fill="white" stroke="#2563eb" stroke-width="1.6"/>
+<text x="269.0" y="223" font-size="28" fill="#2563eb" font-weight="700" text-anchor="middle">4</text>
+</g>
+<path d="M308.0 213 L326.0 213" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="4" data-samples="4"><rect x="328.0" y="186" width="74.0" height="55" rx="6" fill="white" stroke="#2563eb" stroke-width="1.6"/>
+<text x="365.0" y="223" font-size="28" fill="#2563eb" font-weight="700" text-anchor="middle">4</text>
+</g>
+<path d="M404.0 213 L422.0 213" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="5" data-samples="4"><rect x="424.0" y="186" width="74.0" height="55" rx="6" fill="white" stroke="#2563eb" stroke-width="1.6"/>
+<text x="461.0" y="223" font-size="28" fill="#2563eb" font-weight="700" text-anchor="middle">4</text>
+</g>
+<path d="M500.0 213 L518.0 213" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="6" data-samples="4"><rect x="520.0" y="186" width="74.0" height="55" rx="6" fill="white" stroke="#2563eb" stroke-width="1.6"/>
+<text x="557.0" y="223" font-size="28" fill="#2563eb" font-weight="700" text-anchor="middle">4</text>
+</g>
+<path d="M596.0 213 L614.0 213" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="7" data-samples="4"><rect x="616.0" y="186" width="74.0" height="55" rx="6" fill="white" stroke="#2563eb" stroke-width="1.6"/>
+<text x="653.0" y="223" font-size="28" fill="#2563eb" font-weight="700" text-anchor="middle">4</text>
+</g>
+<path d="M692.0 213 L710.0 213" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="8" data-samples="4"><rect x="712.0" y="186" width="74.0" height="55" rx="6" fill="white" stroke="#2563eb" stroke-width="1.6"/>
+<text x="749.0" y="223" font-size="28" fill="#2563eb" font-weight="700" text-anchor="middle">4</text>
+</g>
+<path d="M797 213 L843 213" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="850" y="181" width="208" height="76" rx="10" fill="#2563eb"/>
+<text x="954" y="211" font-size="29" fill="white" font-weight="700" text-anchor="middle">更新 1 次</text>
+<text x="954" y="242" font-size="24" fill="white" font-weight="400" text-anchor="middle">step + 1</text>
+<path d="M40 251 v10 h746 v-10" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+<text x="413" y="298" font-size="25" fill="#2563eb" font-weight="400" text-anchor="middle">组内暂不更新权重，梯度逐批累积</text>
+<text x="954" y="296" font-size="25" fill="#2563eb" font-weight="700" text-anchor="middle">4 × 8 = 32 条</text>
+</g>
+<g id="arrangement-B" data-batch-size="2" data-accumulation="16">
+<rect x="20" y="340" width="1060" height="202" rx="15" fill="#effaf8" stroke="#087f83" stroke-width="1.5"/>
+<text x="40" y="382" font-size="29" fill="#087f83" font-weight="700" text-anchor="start">安排 B：每批 2 条，累积 16 批</text>
+<g data-batch="1" data-samples="2"><rect x="40.0" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="58.15625" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M78.3125 437 L85.3125 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="2" data-samples="2"><rect x="87.3125" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="105.46875" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M125.625 437 L132.625 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="3" data-samples="2"><rect x="134.625" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="152.78125" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M172.9375 437 L179.9375 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="4" data-samples="2"><rect x="181.9375" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="200.09375" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M220.25 437 L227.25 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="5" data-samples="2"><rect x="229.25" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="247.40625" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M267.5625 437 L274.5625 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="6" data-samples="2"><rect x="276.5625" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="294.71875" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M314.875 437 L321.875 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="7" data-samples="2"><rect x="323.875" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="342.03125" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M362.1875 437 L369.1875 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="8" data-samples="2"><rect x="371.1875" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="389.34375" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M409.5 437 L416.5 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="9" data-samples="2"><rect x="418.5" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="436.65625" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M456.8125 437 L463.8125 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="10" data-samples="2"><rect x="465.8125" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="483.96875" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M504.125 437 L511.125 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="11" data-samples="2"><rect x="513.125" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="531.28125" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M551.4375 437 L558.4375 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="12" data-samples="2"><rect x="560.4375" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="578.59375" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M598.75 437 L605.75 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="13" data-samples="2"><rect x="607.75" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="625.90625" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M646.0625 437 L653.0625 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="14" data-samples="2"><rect x="655.0625" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="673.21875" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M693.375 437 L700.375 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="15" data-samples="2"><rect x="702.375" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="720.53125" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M740.6875 437 L747.6875 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<g data-batch="16" data-samples="2"><rect x="749.6875" y="410" width="36.3125" height="55" rx="6" fill="white" stroke="#087f83" stroke-width="1.6"/>
+<text x="767.84375" y="447" font-size="28" fill="#087f83" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M797 437 L843 437" stroke="#526278" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="850" y="405" width="208" height="76" rx="10" fill="#087f83"/>
+<text x="954" y="435" font-size="29" fill="white" font-weight="700" text-anchor="middle">更新 1 次</text>
+<text x="954" y="466" font-size="24" fill="white" font-weight="400" text-anchor="middle">step + 1</text>
+<path d="M40 475 v10 h746 v-10" fill="none" stroke="#087f83" stroke-width="1.5"/>
+<text x="413" y="522" font-size="25" fill="#087f83" font-weight="400" text-anchor="middle">组内暂不更新权重，梯度逐批累积</text>
+<text x="954" y="520" font-size="25" fill="#087f83" font-weight="700" text-anchor="middle">2 × 16 = 32 条</text>
+</g>
+<text x="550" y="591" font-size="29" fill="#172b4d" font-weight="700" text-anchor="middle">更新后，下一组再使用新参数。</text>
+<text x="550" y="629" font-size="25" fill="#172b4d" font-weight="400" text-anchor="middle">每次同时处理的更少，累计的批数更多；32 条并没有一起进入 GPU。</text>
+<text x="550" y="664" font-size="23" fill="#526278" font-weight="400" text-anchor="middle">两种安排的有效批次都是 32；相同有效批次不保证相同速度或训练结果。</text>
+</g></svg>

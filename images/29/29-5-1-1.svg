@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">从原始 JSONL 到可训练数据的正确处理顺序</title>
+  <desc id="desc">原始数据先经过结构与格式检查，再去重并处理冲突，随后划分训练验证测试集，最后登记到训练工具。先划分再去重可能造成数据泄漏。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10Z" fill="#2563eb"/></marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#0f172a" flood-opacity=".12"/></filter>
+    <style>.t{font-family:sans-serif;fill:#0f172a}.title{font-size:28px;font-weight:700}.sub{font-size:16px;fill:#475569}.head{font-size:21px;font-weight:700}.label{font-size:16px;font-weight:700}.small{font-size:14px;fill:#475569}.panel{fill:#fff;stroke:#cbd5e1;stroke-width:2}.blue{fill:#eff6ff;stroke:#60a5fa;stroke-width:2}.green{fill:#ecfdf5;stroke:#34d399;stroke-width:2}.orange{fill:#fff7ed;stroke:#fb923c;stroke-width:2}.purple{fill:#f5f3ff;stroke:#a78bfa;stroke-width:2}.warn{fill:#fef2f2;stroke:#f87171;stroke-width:2}</style>
+  </defs>
+  <rect width="1200" height="720" fill="#f8fafc"/>
+  <text x="48" y="56" class="t title">从原始 JSONL 到可训练数据：顺序错了，测试结果就可能失真</text>
+  <text x="48" y="86" class="t sub">本课程的关键词数据处理重点，不是“文件能打开”，而是确保模型没有提前见过最终测试题。</text>
+
+  <g filter="url(#shadow)">
+    <rect x="42" y="126" width="247" height="410" rx="22" class="panel"/>
+    <rect x="327" y="126" width="247" height="410" rx="22" class="panel"/>
+    <rect x="612" y="126" width="247" height="410" rx="22" class="panel"/>
+    <rect x="897" y="126" width="260" height="410" rx="22" class="panel"/>
+  </g>
+
+  <circle cx="75" cy="164" r="20" fill="#2563eb"/><text x="69" y="171" font-family="sans-serif" font-size="18" font-weight="700" fill="#fff">1</text>
+  <text x="108" y="172" class="t head">原始 JSONL</text>
+  <text x="70" y="204" class="t small">一行一条对话记录</text>
+  <rect x="69" y="232" width="192" height="76" rx="12" class="blue"/><text x="87" y="261" class="t label">user：任务输入</text><text x="87" y="288" class="t small">文章 + 关键词指令</text>
+  <rect x="69" y="326" width="192" height="76" rx="12" class="green"/><text x="87" y="355" class="t label">assistant：标准答案</text><text x="87" y="382" class="t small">英文分号分隔关键词</text>
+  <text x="70" y="455" class="t label">不要直接拿去训练</text><text x="70" y="482" class="t small">先检查结构与答案规则</text>
+
+  <circle cx="360" cy="164" r="20" fill="#0f766e"/><text x="354" y="171" font-family="sans-serif" font-size="18" font-weight="700" fill="#fff">2</text>
+  <text x="393" y="172" class="t head">检查结构与格式</text>
+  <rect x="354" y="218" width="193" height="58" rx="12" class="green"/><text x="377" y="253" class="t label">能否解析 JSON</text>
+  <rect x="354" y="290" width="193" height="58" rx="12" class="green"/><text x="377" y="325" class="t label">user → assistant</text>
+  <rect x="354" y="362" width="193" height="76" rx="12" class="orange"/><text x="377" y="393" class="t label">答案格式统一</text><text x="377" y="419" class="t small">英文分号、无前缀</text>
+  <text x="354" y="482" class="t small">发现末尾分号等问题时，</text><text x="354" y="505" class="t small">记录规则后统一处理。</text>
+
+  <circle cx="645" cy="164" r="20" fill="#f97316"/><text x="639" y="171" font-family="sans-serif" font-size="18" font-weight="700" fill="#fff">3</text>
+  <text x="678" y="172" class="t head">重复与冲突处理</text>
+  <rect x="639" y="220" width="193" height="106" rx="12" class="orange"/><text x="660" y="252" class="t label">相同输入 + 相同答案</text><text x="660" y="283" class="t small">重复样本：保留一条</text>
+  <rect x="639" y="344" width="193" height="106" rx="12" class="purple"/><text x="660" y="376" class="t label">相同输入 + 不同答案</text><text x="660" y="407" class="t small">冲突样本：回到标注规则</text>
+  <text x="639" y="490" class="t small">不能把两种情况混为一谈。</text>
+
+  <circle cx="930" cy="164" r="20" fill="#7c3aed"/><text x="924" y="171" font-family="sans-serif" font-size="18" font-weight="700" fill="#fff">4</text>
+  <text x="963" y="172" class="t head">划分、登记、预览</text>
+  <rect x="924" y="214" width="206" height="142" rx="12" class="purple"/>
+  <rect x="944" y="234" width="145" height="27" rx="8" fill="#dbeafe"/><text x="963" y="254" class="t small">训练集：用于更新</text>
+  <rect x="944" y="272" width="145" height="27" rx="8" fill="#dcfce7"/><text x="963" y="292" class="t small">验证集：用于调整</text>
+  <rect x="944" y="310" width="145" height="27" rx="8" fill="#fef3c7"/><text x="963" y="330" class="t small">测试集：最终验收</text>
+  <text x="924" y="385" class="t label">同一输入只能在一份里</text>
+  <rect x="924" y="410" width="206" height="65" rx="12" class="blue"/><text x="945" y="438" class="t label">dataset_info.json</text><text x="945" y="462" class="t small">登记后到 WebUI 预览</text>
+
+  <path d="M289 331 H316" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M574 331 H601" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M859 331 H886" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="42" y="575" width="1115" height="100" rx="18" class="warn"/>
+  <text x="72" y="615" class="t head">关键顺序：先检查、去重、处理冲突，再划分数据集</text>
+  <text x="72" y="647" class="t small">如果先划分、后去重，同一输入可能分别落到训练集和测试集，模型看起来“考得好”，其实只是见过题目——这就是数据泄漏。</text>
+</svg>

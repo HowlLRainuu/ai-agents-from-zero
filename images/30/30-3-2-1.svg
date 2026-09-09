@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="665" viewBox="0 0 900 665" role="img" aria-labelledby="title desc">
+<title id="title">学习率预热与衰减</title>
+<desc id="desc">按配置绘制的理论示意，不是实测日志。总150步，前5步线性预热到5e-5，再余弦衰减。主图横轴保持比例，下方单独放大前5步。</desc>
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033;font-size:20px}.title{font-size:28px;font-weight:700}.head{font-size:23px;font-weight:700}.small{font-size:18px;fill:#475569}.strong{font-weight:700}.blue{fill:#1d4ed8}.green{fill:#047857}.orange{fill:#c2410c}.white{fill:#fff}.line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}</style>
+<defs><marker id="blue" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#1d4ed8"/></marker><marker id="green" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#047857"/></marker><marker id="orange" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#c2410c"/></marker><marker id="gray" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#475569"/></marker></defs>
+<rect width="900" height="665" rx="16" fill="#f8fafc"/>
+
+<text x="36" y="48" class="title">学习率预热与衰减</text>
+<text x="36" y="80" class="small">配置示意：学习率 5e-5，预热 5 步，总共 150 个更新步。</text>
+<rect x="100" y="144" width="724" height="210" fill="#fff"/>
+<rect x="100" y="144" width="24.13" height="210" fill="#dbeafe"/>
+<path d="M100 144H824M100 249H824M100 354H824M341.33 144V354M582.67 144V354M824 144V354" fill="none" stroke="#e2e8f0"/>
+<path d="M100 134V354H836" fill="none" stroke="#64748b" stroke-width="1.5"/>
+<text x="100" y="120" class="small">学习率</text>
+<text x="90" y="150" text-anchor="end" class="small">5e-5</text><text x="90" y="255" text-anchor="end" class="small">2.5e-5</text><text x="90" y="360" text-anchor="end" class="small">0</text>
+<path d="M100 354L124.13 144" fill="none" stroke="#1d4ed8" stroke-width="3"/>
+<path d="M124.13 144.00 L128.96 144.02 L133.79 144.10 L138.61 144.22 L143.44 144.39 L148.27 144.62 L153.09 144.89 L157.92 145.21 L162.75 145.57 L167.57 145.99 L172.40 146.45 L177.23 146.97 L182.05 147.53 L186.88 148.14 L191.71 148.79 L196.53 149.50 L201.36 150.25 L206.19 151.04 L211.01 151.88 L215.84 152.77 L220.67 153.70 L225.49 154.68 L230.32 155.70 L235.15 156.77 L239.97 157.88 L244.80 159.03 L249.63 160.22 L254.45 161.46 L259.28 162.74 L264.11 164.05 L268.93 165.41 L273.76 166.81 L278.59 168.24 L283.41 169.71 L288.24 171.22 L293.07 172.77 L297.89 174.35 L302.72 175.97 L307.55 177.62 L312.37 179.31 L317.20 181.02 L322.03 182.77 L326.85 184.55 L331.68 186.37 L336.51 188.21 L341.33 190.08 L346.16 191.97 L350.99 193.90 L355.81 195.84 L360.64 197.82 L365.47 199.82 L370.29 201.84 L375.12 203.88 L379.95 205.95 L384.77 208.03 L389.60 210.14 L394.43 212.26 L399.25 214.40 L404.08 216.55 L408.91 218.72 L413.73 220.91 L418.56 223.11 L423.39 225.32 L428.21 227.54 L433.04 229.77 L437.87 232.01 L442.69 234.26 L447.52 236.52 L452.35 238.78 L457.17 241.05 L462.00 243.32 L466.83 245.59 L471.65 247.86 L476.48 250.14 L481.31 252.41 L486.13 254.68 L490.96 256.95 L495.79 259.22 L500.61 261.48 L505.44 263.74 L510.27 265.99 L515.09 268.23 L519.92 270.46 L524.75 272.68 L529.57 274.89 L534.40 277.09 L539.23 279.28 L544.05 281.45 L548.88 283.60 L553.71 285.74 L558.53 287.86 L563.36 289.97 L568.19 292.05 L573.01 294.12 L577.84 296.16 L582.67 298.18 L587.49 300.18 L592.32 302.16 L597.15 304.10 L601.97 306.03 L606.80 307.92 L611.63 309.79 L616.45 311.63 L621.28 313.45 L626.11 315.23 L630.93 316.98 L635.76 318.69 L640.59 320.38 L645.41 322.03 L650.24 323.65 L655.07 325.23 L659.89 326.78 L664.72 328.29 L669.55 329.76 L674.37 331.19 L679.20 332.59 L684.03 333.95 L688.85 335.26 L693.68 336.54 L698.51 337.78 L703.33 338.97 L708.16 340.12 L712.99 341.23 L717.81 342.30 L722.64 343.32 L727.47 344.30 L732.29 345.23 L737.12 346.12 L741.95 346.96 L746.77 347.75 L751.60 348.50 L756.43 349.21 L761.25 349.86 L766.08 350.47 L770.91 351.03 L775.73 351.55 L780.56 352.01 L785.39 352.43 L790.21 352.79 L795.04 353.11 L799.87 353.38 L804.69 353.61 L809.52 353.78 L814.35 353.90 L819.17 353.98 L824.00 354.00" fill="none" stroke="#047857" stroke-width="3"/>
+<circle cx="124.13" cy="144" r="4" fill="#1d4ed8"/>
+<path d="M124.13 148V402" stroke="#1d4ed8" stroke-dasharray="4 4"/>
+<text x="100" y="386" text-anchor="middle" class="small">0</text><text x="124.13" y="424" text-anchor="middle" class="small blue">5</text>
+<text x="341.33" y="386" text-anchor="middle" class="small">50</text><text x="582.67" y="386" text-anchor="middle" class="small">100</text><text x="824" y="386" text-anchor="middle" class="small">150</text>
+<text x="824" y="423" text-anchor="end" class="small">更新步（主图横轴按实际比例）</text>
+<text x="442" y="178" class="strong green">预热后：按余弦曲线逐渐降低</text>
+<rect x="36" y="452" width="288" height="176" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="56" y="482" class="strong blue">局部放大：前 5 步</text>
+<path d="M92 500V598H282" fill="none" stroke="#64748b"/>
+<path d="M92 598L268 505" fill="none" stroke="#1d4ed8" stroke-width="3"/>
+<circle cx="268" cy="505" r="4" fill="#1d4ed8"/>
+<text x="92" y="620" text-anchor="middle" class="small">0</text><text x="268" y="620" text-anchor="middle" class="small">5 步</text>
+<text x="150" y="523" class="small">升到 5e-5</text>
+<text x="352" y="486" class="head">先小步起步，再逐渐减小</text>
+<text x="352" y="527">预热 5 步包含在 150 步之内，</text><text x="352" y="560">不是额外增加 5 步训练。</text>
+<text x="352" y="601" class="small">局部图放大了横轴，不改变主图比例。</text>
+<text x="36" y="653" class="small">这不是实测曲线；具体日志读数仍需结合调度器步号和记录时机。</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="880" viewBox="0 0 1200 880" role="img" aria-labelledby="title desc">
+  <title id="title">转换文件结构，不替模型修改回答</title>
+  <desc id="desc">单轮Qwen3预测的prompt与完整输入核对后，去除已知模板外壳得到input；predict原文成为prediction；label与参考答案核对，不作为模型预测。图书馆例子是教学构造，不是实测输出。</desc>
+  <defs>
+    <marker id="blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L12 6 L0 12Z" fill="#2563eb"/></marker>
+    <marker id="green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L12 6 L0 12Z" fill="#087d66"/></marker>
+    <style>
+      text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#172b4d}
+      .title{font-size:31px;font-weight:700}.sub{font-size:18px;fill:#52637a}
+      .head{font-size:22px;font-weight:700}.body{font-size:20px}
+      .code{font-family:ui-monospace,"PingFang SC","Microsoft YaHei",monospace;font-size:18px}
+      .small{font-size:18px}.hint{font-size:18px;fill:#52637a}
+    </style>
+  </defs>
+  <rect width="1200" height="880" rx="20" fill="#f8fafc"/>
+  <text x="44" y="54" class="title">转换文件结构，不替模型修改回答</text>
+  <text x="44" y="89" class="sub">图书馆教学示例：按配套转换器支持的单轮包装展示，长文本仅视觉换行；不是已运行的预测。</text>
+
+  <text x="44" y="135" class="head">工具输出：generated_predictions.jsonl</text>
+  <text x="774" y="135" class="head">评分输入：predictions.jsonl</text>
+
+  <rect x="44" y="156" width="616" height="319" rx="14" fill="#eff6ff" stroke="#93b5f7" stroke-width="2"/>
+  <text x="66" y="193" class="head" style="fill:#1d4ed8">prompt：完整输入 + 模板外壳</text>
+  <text x="66" y="233" class="code">&lt;|im_start|&gt;user</text>
+  <text x="66" y="270" class="body">市图书馆周末开设儿童阅读课，</text>
+  <text x="66" y="301" class="body">读者可通过公众号预约。</text>
+  <text x="66" y="338" class="body">请提取关键词，只输出关键词，</text>
+  <text x="66" y="369" class="body">并使用英文分号分隔。</text>
+  <text x="66" y="410" class="code">&lt;|im_end|&gt;</text>
+  <text x="66" y="446" class="code">&lt;|im_start|&gt;assistant</text>
+  <path d="M669 315 H761" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#blue)"/>
+  <text x="678" y="282" class="small" style="fill:#1d4ed8">核对后</text>
+  <text x="678" y="352" class="small" style="fill:#1d4ed8">去外壳</text>
+  <rect x="774" y="156" width="382" height="319" rx="14" fill="#fff" stroke="#93b5f7" stroke-width="2"/>
+  <text x="796" y="193" class="head" style="fill:#1d4ed8">input：完整用户输入</text>
+  <text x="796" y="270" class="body">市图书馆周末开设儿童阅读课，</text>
+  <text x="796" y="301" class="body">读者可通过公众号预约。</text>
+  <text x="796" y="338" class="body">请提取关键词，只输出关键词，</text>
+  <text x="796" y="369" class="body">并使用英文分号分隔。</text>
+  <text x="796" y="444" class="hint">文章和任务指令都保留</text>
+
+  <rect x="44" y="505" width="616" height="123" rx="14" fill="#ecfdf5" stroke="#6ebda5" stroke-width="2"/>
+  <text x="66" y="544" class="head" style="fill:#087d66">predict：模型实际回答</text>
+  <text x="66" y="589" class="body">关键词：市图书馆;儿童阅读课</text>
+  <path d="M669 566 H761" fill="none" stroke="#087d66" stroke-width="2.5" marker-end="url(#green)"/>
+  <text x="678" y="544" class="small" style="fill:#087d66">原样保留</text>
+  <rect x="774" y="505" width="382" height="123" rx="14" fill="#fff" stroke="#6ebda5" stroke-width="2"/>
+  <text x="796" y="544" class="head" style="fill:#087d66">prediction：同一份回答</text>
+  <text x="796" y="589" class="body">关键词：市图书馆;儿童阅读课</text>
+
+  <rect x="44" y="658" width="1112" height="121" rx="14" fill="#fff7ed" stroke="#e6b980" stroke-width="2"/>
+  <text x="66" y="696" class="head">label：市图书馆;儿童阅读课;公众号预约</text>
+  <text x="66" y="733" class="body">只用来核对“是否对应这道题的参考答案”，不填入 prediction，也不替模型补上漏词。</text>
+  <text x="44" y="822" class="small">这个预测带有多余前缀、漏掉预约方式。转换时都保留，之后分别计入格式检查与内容评分。</text>
+  <text x="44" y="852" class="small">遇到不同模板、缺失或重复记录，先核对原文件。不要盲目改名、按行号配对或删除保护检查。</text>
+</svg>

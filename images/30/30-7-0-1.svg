@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="650" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+<title id="title">全参数微调、LoRA 与 QLoRA</title>
+<desc id="desc">按基础权重是否更新、训练时更新的部分、主要任务权重产物对比。QLoRA量化基础权重，仍训练LoRA参数。</desc>
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033;font-size:20px}.title{font-size:28px;font-weight:700}.head{font-size:23px;font-weight:700}.small{font-size:18px;fill:#475569}.strong{font-weight:700}.blue{fill:#1d4ed8}.green{fill:#047857}.orange{fill:#c2410c}.white{fill:#fff}.line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}</style>
+<defs><marker id="blue" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#1d4ed8"/></marker><marker id="green" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#047857"/></marker><marker id="orange" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#c2410c"/></marker><marker id="gray" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#475569"/></marker></defs>
+<rect width="900" height="650" rx="16" fill="#f8fafc"/>
+
+<text x="36" y="48" class="title">全参数微调、LoRA 与 QLoRA</text>
+<text x="36" y="80" class="small">重点看：原权重怎么存，训练改哪里，最后保存什么。</text>
+<rect x="36" y="108" width="264" height="456" rx="12" fill="#fff" stroke="#cbd5e1"/>
+<text x="168" y="151" text-anchor="middle" class="head">全参数微调</text>
+<path d="M54 171H282" stroke="#e2e8f0"/>
+<text x="56" y="207" class="small">基础权重</text>
+<rect x="54" y="222" width="228" height="88" rx="10" fill="#fff7ed"/>
+<text x="68" y="255" class="strong">参与更新</text>
+<text x="68" y="289">如 FP16 / BF16 加载</text>
+<text x="56" y="351" class="small">训练时更新</text>
+<rect x="54" y="366" width="228" height="52" rx="10" fill="#c2410c"/>
+<text x="168" y="400" text-anchor="middle" class="strong white">大量原模型参数</text>
+<text x="56" y="457" class="small">主要任务权重产物</text>
+<text x="56" y="494">微调后的完整权重</text>
+<text x="56" y="530" class="small">直接保存更新后的模型</text>
+<rect x="318" y="108" width="264" height="456" rx="12" fill="#fff" stroke="#cbd5e1"/>
+<text x="450" y="151" text-anchor="middle" class="head">LoRA</text>
+<path d="M336 171H564" stroke="#e2e8f0"/>
+<text x="338" y="207" class="small">基础权重</text>
+<rect x="336" y="222" width="228" height="88" rx="10" fill="#eff6ff"/>
+<text x="350" y="255" class="strong">冻结，不更新</text>
+<text x="350" y="289">如 FP16 / BF16 加载</text>
+<text x="338" y="351" class="small">训练时更新</text>
+<rect x="336" y="366" width="228" height="52" rx="10" fill="#047857"/>
+<text x="450" y="400" text-anchor="middle" class="strong white">少量 A、B 参数</text>
+<text x="338" y="457" class="small">主要任务权重产物</text>
+<text x="338" y="494">LoRA Adapter</text>
+<text x="338" y="530" class="small">使用时仍需匹配的基础模型</text>
+<rect x="600" y="108" width="264" height="456" rx="12" fill="#fff" stroke="#cbd5e1"/>
+<text x="732" y="151" text-anchor="middle" class="head">QLoRA</text>
+<path d="M618 171H846" stroke="#e2e8f0"/>
+<text x="620" y="207" class="small">基础权重</text>
+<rect x="618" y="222" width="228" height="88" rx="10" fill="#eff6ff"/>
+<text x="632" y="255" class="strong">冻结，不更新</text>
+<text x="632" y="289">低比特量化保存</text>
+<text x="620" y="351" class="small">训练时更新</text>
+<rect x="618" y="366" width="228" height="52" rx="10" fill="#047857"/>
+<text x="732" y="400" text-anchor="middle" class="strong white">少量 A、B 参数</text>
+<text x="620" y="457" class="small">主要任务权重产物</text>
+<text x="620" y="494">LoRA Adapter</text>
+<text x="620" y="530" class="small">使用时仍需匹配的基础模型</text>
+<text x="36" y="604" class="strong">QLoRA 主要压缩基础权重，梯度、优化器信息和中间结果仍占显存。</text>
+<text x="36" y="634" class="small">本课程先使用普通 LoRA；基础权重占用过大时，再评估量化是否适合。</text>
+</svg>

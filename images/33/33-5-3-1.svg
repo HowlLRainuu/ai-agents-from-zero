@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="706" viewBox="0 0 1200 706" role="img" aria-labelledby="title desc">
+<title id="title">训练进度条与预计时长的教学算例</title>
+<desc id="desc">30/150代表已完成30步共150步，已用4分钟，预计剩余16分钟，每步8秒。剩余120步乘8秒为16分钟，总计约20分钟；速度比较要看相同工作量。</desc>
+<defs>
+<marker id="arrow-2563eb" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#2563eb"/></marker>
+<marker id="arrow-7c3aed" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#7c3aed"/></marker>
+<marker id="arrow-059669" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#059669"/></marker>
+</defs>
+<g font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif">
+<rect width="1200" height="706" fill="#f8fafc"/>
+<text x="36" y="49" font-size="30" fill="#0f172a" font-weight="700" text-anchor="start" >读一条训练进度：先看完成多少，再看还需多久</text>
+<text x="36" y="82" font-size="21" fill="#64748b" font-weight="400" text-anchor="start" >教学算例 · 不是指定模型或 GPU 的实测结果</text>
+<rect x="32" y="109" width="1136" height="119" rx="14" fill="#0f172a" stroke="#0f172a"/>
+<text x="66" y="152" font-size="20" fill="#cbd5e1" font-weight="500" text-anchor="start" >Trainer 更新进度条</text>
+<text x="80" y="202" font-size="34" fill="#93c5fd" font-weight="700" text-anchor="start" >30/150</text>
+<text x="329" y="202" font-size="34" fill="#c4b5fd" font-weight="700" text-anchor="start" >[04:00</text>
+<text x="588" y="202" font-size="34" fill="#6ee7b7" font-weight="700" text-anchor="start" >&lt;16:00,</text>
+<text x="858" y="202" font-size="34" fill="#fcd34d" font-weight="700" text-anchor="start" >8.00s/it]</text>
+<path d="M 165 229 V 267" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-2563eb)"/>
+<rect x="32" y="278" width="266" height="143" rx="14" fill="#fff" stroke="#dbe4ee"/>
+<text x="165" y="313" font-size="22" fill="#2563eb" font-weight="600" text-anchor="middle" >已完成 / 总步数</text>
+<text x="165" y="358" font-size="28" fill="#0f172a" font-weight="700" text-anchor="middle" >30 / 150</text>
+<text x="165" y="395" font-size="19" fill="#475569" font-weight="400" text-anchor="middle" >还剩 120 个更新 step</text>
+<path d="M 455 229 V 267" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-7c3aed)"/>
+<rect x="322" y="278" width="266" height="143" rx="14" fill="#fff" stroke="#dbe4ee"/>
+<text x="455" y="313" font-size="22" fill="#7c3aed" font-weight="600" text-anchor="middle" >已运行时间</text>
+<text x="455" y="358" font-size="28" fill="#0f172a" font-weight="700" text-anchor="middle" >4 分钟</text>
+<text x="455" y="395" font-size="19" fill="#475569" font-weight="400" text-anchor="middle" >不是模型下载用时</text>
+<path d="M 745 229 V 267" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-059669)"/>
+<rect x="612" y="278" width="266" height="143" rx="14" fill="#fff" stroke="#dbe4ee"/>
+<text x="745" y="313" font-size="22" fill="#059669" font-weight="600" text-anchor="middle" >预计剩余时间</text>
+<text x="745" y="358" font-size="28" fill="#0f172a" font-weight="700" text-anchor="middle" >16 分钟</text>
+<text x="745" y="395" font-size="19" fill="#475569" font-weight="400" text-anchor="middle" >估计会随运行情况变化</text>
+<path d="M 1035 229 V 267" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-2563eb)"/>
+<rect x="902" y="278" width="266" height="143" rx="14" fill="#fff" stroke="#dbe4ee"/>
+<text x="1035" y="313" font-size="22" fill="#2563eb" font-weight="600" text-anchor="middle" >每步耗时</text>
+<text x="1035" y="358" font-size="28" fill="#0f172a" font-weight="700" text-anchor="middle" >8 秒 / step</text>
+<text x="1035" y="395" font-size="19" fill="#475569" font-weight="400" text-anchor="middle" >先确认每步处理多少样本</text>
+<rect x="32" y="445" width="1136" height="98" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+<text x="58" y="483" font-size="26" fill="#1e40af" font-weight="600" text-anchor="start" >剩余：(150 − 30) × 8 秒 = 960 秒 = 16 分钟</text>
+<text x="58" y="521" font-size="23" fill="#334155" font-weight="400" text-anchor="start" >总计粗估：已用 4 分钟 + 剩余 16 分钟 = 20 分钟</text>
+<rect x="32" y="567" width="553" height="115" rx="14" fill="#fff" stroke="#dbe4ee"/>
+<text x="54" y="606" font-size="24" fill="#0f172a" font-weight="700" text-anchor="start" >下一步：比较相同工作量</text>
+<text x="54" y="641" font-size="20" fill="#334155" font-weight="400" text-anchor="start" >32 篇 / 8 秒，与 16 篇 / 4 秒，都是 4 篇 / 秒。</text>
+<text x="54" y="668" font-size="20" fill="#334155" font-weight="400" text-anchor="start" >不能只凭 step 变快，就说处理速度翻倍。</text>
+<rect x="605" y="567" width="563" height="115" rx="14" fill="#fff" stroke="#dbe4ee"/>
+<text x="627" y="606" font-size="24" fill="#0f172a" font-weight="700" text-anchor="start" >继续观察：还有哪些阶段没经过？</text>
+<text x="627" y="641" font-size="20" fill="#334155" font-weight="400" text-anchor="start" >长样本、验证、保存检查点，可能改变占用与耗时。</text>
+<text x="627" y="668" font-size="20" fill="#334155" font-weight="400" text-anchor="start" >短跑能启动，不等于完整训练或任务质量已合格。</text>
+</g>
+</svg>

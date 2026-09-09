@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="738" viewBox="0 0 1200 738" role="img" aria-labelledby="title desc">
+<title id="title">梯度检查点的保存与重算</title><desc id="desc">不启用时保留反向需要的中间结果；启用后只保存部分结果，例如a1和a3，需要a2时用a1重算第2层。这不是磁盘检查点。</desc>
+<defs><marker id="arrow-2563eb" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#2563eb"/></marker><marker id="arrow-7c3aed" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#7c3aed"/></marker><marker id="arrow-059669" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#059669"/></marker><marker id="arrow-64748b" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#64748b"/></marker></defs>
+<g font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif">
+<rect width="1200" height="738" fill="#f8fafc"/>
+<text x="36" y="52" font-size="34" fill="#0f172a" font-weight="700" text-anchor="start">梯度检查点：少保存一些，需要时再算</text>
+<text x="36" y="91" font-size="23" fill="#334155" font-weight="400" text-anchor="start">反向传播需要前向计算留下的中间结果。下面只示意三个连续的模型层。</text>
+<rect x="32" y="122" width="1136" height="202" rx="14" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="56" y="163" font-size="27" fill="#2563eb" font-weight="700" text-anchor="start">不使用梯度检查点</text>
+<text x="56" y="205" font-size="22" fill="#334155" font-weight="400" text-anchor="start">保留所需结果</text>
+<text x="56" y="238" font-size="22" fill="#334155" font-weight="400" text-anchor="start">反向时直接取用</text>
+<rect x="345" y="150" width="235" height="128" rx="14" fill="#fff" stroke="#2563eb"/>
+<text x="462" y="187" font-size="25" fill="#2563eb" font-weight="700" text-anchor="middle">第 1 层</text>
+<text x="462" y="225" font-size="23" fill="#334155" font-weight="400" text-anchor="middle">中间结果 a1</text>
+<text x="462" y="260" font-size="21" fill="#2563eb" font-weight="600" text-anchor="middle">保存</text>
+<path d="M580 186 H605" fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow-2563eb)"/>
+<rect x="610" y="150" width="235" height="128" rx="14" fill="#fff" stroke="#2563eb"/>
+<text x="727" y="187" font-size="25" fill="#2563eb" font-weight="700" text-anchor="middle">第 2 层</text>
+<text x="727" y="225" font-size="23" fill="#334155" font-weight="400" text-anchor="middle">中间结果 a2</text>
+<text x="727" y="260" font-size="21" fill="#2563eb" font-weight="600" text-anchor="middle">保存</text>
+<path d="M845 186 H870" fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow-2563eb)"/>
+<rect x="875" y="150" width="235" height="128" rx="14" fill="#fff" stroke="#2563eb"/>
+<text x="992" y="187" font-size="25" fill="#2563eb" font-weight="700" text-anchor="middle">第 3 层</text>
+<text x="992" y="225" font-size="23" fill="#334155" font-weight="400" text-anchor="middle">中间结果 a3</text>
+<text x="992" y="260" font-size="21" fill="#2563eb" font-weight="600" text-anchor="middle">保存</text>
+<text x="345" y="306" font-size="21" fill="#334155" font-weight="400" text-anchor="start">前向计算：第 1 层 → 第 2 层 → 第 3 层。</text>
+<rect x="32" y="350" width="1136" height="202" rx="14" fill="#f5f3ff" stroke="#c4b5fd"/>
+<text x="56" y="391" font-size="27" fill="#7c3aed" font-weight="700" text-anchor="start">启用梯度检查点</text>
+<text x="56" y="433" font-size="22" fill="#334155" font-weight="400" text-anchor="start">保留部分结果</text>
+<text x="56" y="466" font-size="22" fill="#334155" font-weight="400" text-anchor="start">未保存的按需重算</text>
+<rect x="345" y="378" width="235" height="128" rx="14" fill="#fff" stroke="#7c3aed"/>
+<text x="462" y="415" font-size="25" fill="#7c3aed" font-weight="700" text-anchor="middle">第 1 层</text>
+<text x="462" y="453" font-size="23" fill="#334155" font-weight="400" text-anchor="middle">中间结果 a1</text>
+<text x="462" y="488" font-size="21" fill="#7c3aed" font-weight="600" text-anchor="middle">保存</text>
+<path d="M580 414 H605" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow-7c3aed)"/>
+<rect x="610" y="378" width="235" height="128" rx="14" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="7 5"/>
+<text x="727" y="415" font-size="25" fill="#7c3aed" font-weight="700" text-anchor="middle">第 2 层</text>
+<text x="727" y="453" font-size="23" fill="#334155" font-weight="400" text-anchor="middle">中间结果 a2</text>
+<text x="727" y="488" font-size="21" fill="#64748b" font-weight="600" text-anchor="middle">不长期保留</text>
+<path d="M845 414 H870" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow-7c3aed)"/>
+<rect x="875" y="378" width="235" height="128" rx="14" fill="#fff" stroke="#7c3aed"/>
+<text x="992" y="415" font-size="25" fill="#7c3aed" font-weight="700" text-anchor="middle">第 3 层</text>
+<text x="992" y="453" font-size="23" fill="#334155" font-weight="400" text-anchor="middle">中间结果 a3</text>
+<text x="992" y="488" font-size="21" fill="#7c3aed" font-weight="600" text-anchor="middle">保存</text>
+<text x="345" y="534" font-size="21" fill="#334155" font-weight="400" text-anchor="start">示例选择保存 a1、a3；具体保留位置由实现决定。</text>
+<rect x="32" y="576" width="1136" height="93" rx="14" fill="#fff" stroke="#c4b5fd"/>
+<text x="56" y="613" font-size="27" fill="#6d28d9" font-weight="700" text-anchor="start">反向需要 a2 时：取出 a1 → 重新计算第 2 层 → 得到 a2</text>
+<text x="56" y="650" font-size="23" fill="#334155" font-weight="400" text-anchor="start">节省部分中间结果的存储，但多做了计算；不是把整个模型重新训练一遍。</text>
+<text x="36" y="706" font-size="23" fill="#0f172a" font-weight="600" text-anchor="start">别混淆：梯度检查点是计算策略；checkpoint-50 是保存到磁盘的训练存档。</text>
+</g></svg>

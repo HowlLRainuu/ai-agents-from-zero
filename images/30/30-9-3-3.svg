@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="805" viewBox="0 0 900 805" role="img" aria-labelledby="title desc">
+<title id="title">Loss 现象与检查方向</title>
+<desc id="desc">教学示意不是实测曲线。四种现象：长期不降、剧烈波动、训练降而验证升、两者都降但任务输出仍错。分别检查数据和监督位置、异常样本与训练设置、验证条件与检查点、答案质量和推理设置，不凭一个点判定。</desc>
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033;font-size:20px}.title{font-size:28px;font-weight:700}.head{font-size:23px;font-weight:700}.small{font-size:18px;fill:#475569}.strong{font-weight:700}.blue{fill:#1d4ed8}.green{fill:#047857}.orange{fill:#c2410c}.white{fill:#fff}.line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}</style>
+<defs><marker id="blue" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#1d4ed8"/></marker><marker id="green" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#047857"/></marker><marker id="orange" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#c2410c"/></marker><marker id="gray" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" viewBox="0 0 12 12" refX="11" refY="6" orient="auto"><path d="M1 1L11 6L1 11Z" fill="#475569"/></marker></defs>
+<rect width="900" height="805" rx="16" fill="#f8fafc"/>
+
+<text x="36" y="48" class="title">Loss 变化怎样检查？</text>
+<text x="36" y="80" class="small">以下曲线只画趋势，不是本次训练记录，也不代表合格分数线。</text>
+<path d="M430 108H458" stroke="#1d4ed8" stroke-width="3"/><text x="468" y="114" class="small">训练 Loss</text>
+<path d="M637 108H665" stroke="#c2410c" stroke-width="3" stroke-dasharray="6 4"/><text x="675" y="114" class="small">验证 Loss</text>
+<rect x="36" y="140" width="828" height="138" rx="12" fill="#fff" stroke="#cbd5e1"/>
+<text x="58" y="174" class="strong">长期不下降</text>
+<path d="M62 242L99 236L130 241L166 234L205 237L265 230" class="line" stroke="#1d4ed8"/>
+<path d="M308 208H344" class="line" stroke="#475569" marker-end="url(#gray)"/>
+<text x="368" y="176">先查数据是否读入、答案位置是否计分。</text>
+<text x="368" y="213">再检查学习率是否合适。</text>
+<text x="368" y="251" class="small">不能立刻认定模型太小。</text>
+<rect x="36" y="294" width="828" height="138" rx="12" fill="#fff" stroke="#cbd5e1"/>
+<text x="58" y="328" class="strong">出现剧烈波动</text>
+<path d="M62 393L91 368L120 403L150 351L178 409L214 360L265 393" class="line" stroke="#1d4ed8"/>
+<path d="M308 362H344" class="line" stroke="#475569" marker-end="url(#gray)"/>
+<text x="368" y="330">先定位波动处的样本，再查学习率、训练异常。</text>
+<text x="368" y="367">结合整段趋势判断，不只看一个尖峰。</text>
+<text x="368" y="405" class="small">单个尖峰不等于训练失败。</text>
+<rect x="36" y="448" width="828" height="138" rx="12" fill="#fff" stroke="#cbd5e1"/>
+<text x="58" y="482" class="strong">训练降，验证连续升</text>
+<path d="M62 514L110 528L164 542L215 554L265 566" class="line" stroke="#1d4ed8"/><path d="M62 536L110 547L164 544L215 525L265 504" class="line" stroke="#c2410c" stroke-dasharray="6 4"/>
+<path d="M308 516H344" class="line" stroke="#475569" marker-end="url(#gray)"/>
+<text x="368" y="484">先核对验证数据、模板与截断条件是否一致。</text>
+<text x="368" y="521">再比较较早、较晚检查点的实际回答。</text>
+<text x="368" y="559" class="small">可能是过拟合信号，不凭一个点宣布结论。</text>
+<rect x="36" y="602" width="828" height="138" rx="12" fill="#fff" stroke="#cbd5e1"/>
+<text x="58" y="636" class="strong">两种 Loss 都降</text>
+<path d="M62 665L120 691L188 708L265 720" class="line" stroke="#1d4ed8"/><path d="M62 652L120 674L188 692L265 705" class="line" stroke="#c2410c" stroke-dasharray="6 4"/>
+<path d="M308 670H344" class="line" stroke="#475569" marker-end="url(#gray)"/>
+<text x="368" y="638">如果实际关键词仍有漏词、多词或格式错误，</text>
+<text x="368" y="675">回查参考答案质量、推理设置和错误类型。</text>
+<text x="368" y="713" class="small">Loss 下降不等于任务验收通过。</text>
+<text x="36" y="780" class="strong">先看趋势，再查记录；最终仍要检查未参与训练的输入上的实际回答。</text>
+</svg>
