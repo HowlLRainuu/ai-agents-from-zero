@@ -1,5 +1,6 @@
 [project]
 name = "ai-agents-from-zero"
+version = "1.0.0"
 description = "AI 智能体实战速成指南：从零到企业级落地 - 案例与源码"
 readme = "README.md"
 # 推荐 3.10；支持 3.10–3.13；3.14 下 langchain-redis 等尚未兼容，故上限为 3.13
