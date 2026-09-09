@@ -47,7 +47,7 @@ LangChain 可以通过不同集成包接入很多模型提供商，官方提供�
 - **支持范围**：Python **3.10–3.13**
 - **不建议使用**：Python **3.14**
 
-本仓库根目录的 [requirements.txt](requirements.txt) 已明确写明：项目当前推荐 **Python 3.10**，并说明 **`langchain-redis` 等依赖暂未兼容 3.14**。因此，本章不再沿用旧资料里常见的“Python 3.8+”说法，而是建议你直接按本项目约定来，后续章节更省心。
+本仓库根目录的 `requirements.txt` 已明确写明：项目当前推荐 **Python 3.10**，并说明 **`langchain-redis` 等依赖暂未兼容 3.14**。因此，本章不再沿用旧资料里常见的“Python 3.8+”说法，而是建议你直接按本项目约定来，后续章节更省心。
 
 如果你是第一次跑本仓库案例，推荐做法是：
 
@@ -154,7 +154,7 @@ pip install langchain-core -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip install langchain-deepseek -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-> **说明**：本项目的 [requirements.txt](requirements.txt) 已包含 `langchain-deepseek`，所以如果你已经执行过 `pip install -r requirements.txt`，这里通常不需要再单独安装。
+> **说明**：本项目的 `requirements.txt` 已包含 `langchain-deepseek`，所以如果你已经执行过 `pip install -r requirements.txt`，这里通常不需要再单独安装。
 
 ### 3.3 验证安装
 
