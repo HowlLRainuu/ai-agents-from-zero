@@ -1,0 +1,54 @@
+{
+  "config": {
+    "model_name_or_path": "/root/.cache/modelscope/models/Qwen--Qwen3-0.6B/snapshots/master",
+    "adapter_name_or_path": "saves/Qwen3-0.6B-Thinking/lora/keywords-clean",
+    "template": "qwen3_nothink",
+    "finetuning_type": "lora",
+    "trust_remote_code": true,
+    "export_device": "cpu",
+    "export_size": 2,
+    "infer_dtype": "float16",
+    "export_legacy_format": false
+  },
+  "tensor_dtypes": {
+    "F16": 310
+  },
+  "files": [
+    {
+      "name": "Modelfile",
+      "bytes": 381,
+      "sha256": "6ff2ee517c72f16c560b06f414bcc4bf583715abdd263723242baaea23393377"
+    },
+    {
+      "name": "chat_template.jinja",
+      "bytes": 4168,
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8"
+    },
+    {
+      "name": "config.json",
+      "bytes": 1415,
+      "sha256": "140bc1c3a571e2a1482ba5586f46b87b2ee6ca0374af5f4a6cd6e2a645096840"
+    },
+    {
+      "name": "generation_config.json",
+      "bytes": 213,
+      "sha256": "974a56ba67121bce90267da8ef318d1bbf70274c3139c97331d8d5460a1b45b0"
+    },
+    {
+      "name": "model.safetensors",
+      "bytes": 1192134784,
+      "sha256": "4a80231aead014a50b67d7c51b49c7d239d68222d2d1d680bcd42233cc981d8a"
+    },
+    {
+      "name": "tokenizer.json",
+      "bytes": 11422650,
+      "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506"
+    },
+    {
+      "name": "tokenizer_config.json",
+      "bytes": 718,
+      "sha256": "84d5f3d5b23156305adcc3b446a09ee865766d87228af44bb3303042c68c9d6a"
+    }
+  ],
+  "scope": "导出时的文件清单与权重精度；独立加载及回答对照见同目录的验证与合并模型对照.json。"
+}

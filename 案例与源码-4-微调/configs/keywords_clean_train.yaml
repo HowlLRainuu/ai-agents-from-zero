@@ -1,0 +1,44 @@
+# 第 31 章关键词 LoRA 训练配置；数据与输出目录统一为 keywords-clean。
+# 在 LLaMA-Factory 根目录运行；复做前使用新的输出目录，避免覆盖已保存的实验。
+model_name_or_path: Qwen/Qwen3-0.6B
+trust_remote_code: true
+stage: sft
+do_train: true
+finetuning_type: lora
+template: qwen3_nothink
+enable_thinking: false
+dataset_dir: data/keywords-clean
+dataset: keywords_train
+eval_dataset: keywords_validation
+val_size: 0
+cutoff_len: 2048
+max_samples: 1600
+preprocessing_num_workers: 4
+packing: false
+train_on_prompt: false
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 8
+learning_rate: 5.0e-5
+num_train_epochs: 3
+lr_scheduler_type: cosine
+warmup_steps: 5
+logging_steps: 5
+save_steps: 50
+eval_strategy: steps
+eval_steps: 50
+per_device_eval_batch_size: 4
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+greater_is_better: false
+fp16: true
+bf16: false
+optim: adamw_torch
+lora_rank: 8
+lora_alpha: 16
+lora_dropout: 0
+lora_target: all
+seed: 42
+report_to: none
+plot_loss: true
+output_dir: saves/Qwen3-0.6B-Thinking/lora/keywords-clean
+# 不填 adapter_name_or_path、resume_from_checkpoint；从原始模型新建 Adapter。

@@ -1,0 +1,52 @@
+{
+  "started_at_utc": "2026-09-07T14:52:03.974763+00:00",
+  "config": {
+    "model_name_or_path": "/root/.cache/modelscope/models/Qwen--Qwen3-0.6B/snapshots/master",
+    "trust_remote_code": true,
+    "stage": "sft",
+    "do_predict": true,
+    "predict_with_generate": true,
+    "finetuning_type": "lora",
+    "template": "qwen3_nothink",
+    "enable_thinking": false,
+    "infer_dtype": "float16",
+    "fp16": true,
+    "bf16": false,
+    "fp16_full_eval": true,
+    "dataset_dir": "data/keywords-clean",
+    "eval_dataset": "keywords_test",
+    "max_samples": 200,
+    "cutoff_len": 2048,
+    "per_device_eval_batch_size": 4,
+    "preprocessing_num_workers": 4,
+    "do_sample": false,
+    "max_new_tokens": 256,
+    "repetition_penalty": 1.0,
+    "seed": 42,
+    "report_to": "none",
+    "output_dir": "saves/Qwen3-0.6B-Thinking/lora/keywords-clean-test-base"
+  },
+  "config_sha256": "19600ab04d154d5466e1dd0f53512fa8acbd359100eb206038709214e5dc596c",
+  "data_sha256": "ae46746fef61823cb71eaec46a02c0e83679a15df2b09018baca1ee45b991e0b",
+  "expected_samples": 200,
+  "python": "3.12.3",
+  "packages": {
+    "llamafactory": "0.9.6.dev0",
+    "transformers": "5.8.0",
+    "torch": "2.14.0+cu126"
+  },
+  "gpu": "Tesla V100-PCIE-32GB",
+  "compute_capability": [
+    7,
+    0
+  ],
+  "prediction_steps": 50,
+  "actual_parameter_dtypes": {
+    "torch.float16": 596049920
+  },
+  "model_class": "Qwen3ForCausalLM",
+  "model_path": "/root/.cache/modelscope/models/Qwen--Qwen3-0.6B/snapshots/master",
+  "completed_at_utc": "2026-09-07T15:03:35.133525+00:00",
+  "actual_samples": 200,
+  "predictions_sha256": "e2a7e38d11e84fb1d05394c041325cae2ac8833dbc770a950389f714a1009248"
+}

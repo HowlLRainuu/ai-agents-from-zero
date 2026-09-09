@@ -1,0 +1,93 @@
+{
+  "gpu": "Tesla V100-PCIE-32GB, 32768 MiB",
+  "llamafactory_commit": "dced5f8804bfbf7109ef7c14401db6bd5cce7e53",
+  "packages": {
+    "torch": "2.14.0+cu126",
+    "transformers": "5.8.0",
+    "llamafactory": "0.9.6.dev0",
+    "peft": "0.18.1"
+  },
+  "data_sha256": {
+    "keywords_train.jsonl": "f1f6077f0cdd781871f088ba51f44f30aec004e98a949fb2701ec61b719ca942",
+    "keywords_validation.jsonl": "017372b0de86473c9267a3268c19b33a67009c94bfc3bc93529f97ae01cdf9ad"
+  },
+  "effective_batch": 32,
+  "update_steps": 50,
+  "sampled_memory_scope": "whole CLI process: loading, training, validation and saving; nvidia-smi sampled every 200 ms",
+  "sampled_memory_limit": "highest observed sample, not the true instantaneous peak",
+  "quality_limit": "short resource trial; validation loss is not a keyword quality evaluation",
+  "runs": [
+    {
+      "name": "batch4-acc8",
+      "batch": 4,
+      "accumulation": 8,
+      "return_code": 0,
+      "cli_wall_seconds": 300.5405716598034,
+      "gpu_sample_count": 1477,
+      "highest_sampled_gpu_memory_mib": 28588.0,
+      "trainer_results": {
+        "before_init_mem_cpu": 1353441280,
+        "before_init_mem_gpu": 1212824576,
+        "epoch": 1.0,
+        "eval_loss": 2.170727491378784,
+        "eval_mem_cpu_alloc_delta": 0,
+        "eval_mem_cpu_peaked_delta": 4096,
+        "eval_mem_gpu_alloc_delta": 0,
+        "eval_mem_gpu_peaked_delta": 3716213760,
+        "eval_runtime": 10.041,
+        "eval_samples_per_second": 19.918,
+        "eval_steps_per_second": 4.98,
+        "init_mem_cpu_alloc_delta": 0,
+        "init_mem_cpu_peaked_delta": 0,
+        "init_mem_gpu_alloc_delta": 0,
+        "init_mem_gpu_peaked_delta": 0,
+        "total_flos": 1138519242178560.0,
+        "train_loss": 2.6381325721740723,
+        "train_mem_cpu_alloc_delta": 629567488,
+        "train_mem_cpu_peaked_delta": 0,
+        "train_mem_gpu_alloc_delta": 57411072,
+        "train_mem_gpu_peaked_delta": 7787561472,
+        "train_runtime": 258.4547,
+        "train_samples_per_second": 6.191,
+        "train_steps_per_second": 0.193
+      },
+      "checkpoint_saved": true
+    },
+    {
+      "name": "batch2-acc16",
+      "batch": 2,
+      "accumulation": 16,
+      "return_code": 0,
+      "cli_wall_seconds": 560.2727535292506,
+      "gpu_sample_count": 2754,
+      "highest_sampled_gpu_memory_mib": 22230.0,
+      "trainer_results": {
+        "before_init_mem_cpu": 1355276288,
+        "before_init_mem_gpu": 1212824576,
+        "epoch": 1.0,
+        "eval_loss": 2.1708054542541504,
+        "eval_mem_cpu_alloc_delta": 0,
+        "eval_mem_cpu_peaked_delta": 4096,
+        "eval_mem_gpu_alloc_delta": 0,
+        "eval_mem_gpu_peaked_delta": 3716213760,
+        "eval_runtime": 10.0873,
+        "eval_samples_per_second": 19.827,
+        "eval_steps_per_second": 4.957,
+        "init_mem_cpu_alloc_delta": 0,
+        "init_mem_cpu_peaked_delta": 4096,
+        "init_mem_gpu_alloc_delta": 0,
+        "init_mem_gpu_peaked_delta": 0,
+        "total_flos": 946527774179328.0,
+        "train_loss": 2.6380521392822267,
+        "train_mem_cpu_alloc_delta": 592363520,
+        "train_mem_cpu_peaked_delta": 28176384,
+        "train_mem_gpu_alloc_delta": 57411072,
+        "train_mem_gpu_peaked_delta": 4059187200,
+        "train_runtime": 516.9162,
+        "train_samples_per_second": 3.095,
+        "train_steps_per_second": 0.097
+      },
+      "checkpoint_saved": true
+    }
+  ]
+}

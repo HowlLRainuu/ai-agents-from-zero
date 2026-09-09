@@ -1,0 +1,11 @@
+# 导出前确认新 Adapter 已通过验证；此文件不是导出成功记录。
+model_name_or_path: Qwen/Qwen3-0.6B
+adapter_name_or_path: saves/Qwen3-0.6B-Thinking/lora/keywords-clean
+template: qwen3_nothink
+finetuning_type: lora
+trust_remote_code: true
+export_dir: /root/autodl-tmp/exports/keywords-clean-merged
+export_device: cpu
+export_size: 2
+infer_dtype: float16
+export_legacy_format: false

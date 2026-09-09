@@ -1,0 +1,16 @@
+{
+  "raw_records": 2000,
+  "changes": [],
+  "duplicates": [],
+  "review_required": [],
+  "clean_records": 2000,
+  "normalized_answers": 0,
+  "removed_duplicates": 0,
+  "source": {
+    "file": "keywords_data_sharegpt_small.jsonl",
+    "records": 2000,
+    "sha256": "60947f148bf486c66c5ed788236081e521eaec673ee9e0897b54406176ee44f3"
+  },
+  "semantic_review": "未逐条审核答案语义；格式检查不能替代标注审核",
+  "dedup_scope": "完整 user.content 合并连续空白后的精确匹配；不包含语义近重复检查"
+}

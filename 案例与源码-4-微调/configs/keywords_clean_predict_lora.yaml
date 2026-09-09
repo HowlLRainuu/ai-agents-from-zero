@@ -1,0 +1,27 @@
+# 与基线保持同条件，只增加 Adapter 并更换输出目录。必须先完成第 31 章新训练。
+model_name_or_path: Qwen/Qwen3-0.6B
+adapter_name_or_path: saves/Qwen3-0.6B-Thinking/lora/keywords-clean
+trust_remote_code: true
+stage: sft
+do_predict: true
+predict_with_generate: true
+finetuning_type: lora
+template: qwen3_nothink
+enable_thinking: false
+infer_dtype: float16
+fp16: true
+bf16: false
+# 与基线相同：预测前转换为 FP16，并用核验脚本记录实际参数精度。
+fp16_full_eval: true
+dataset_dir: data/keywords-clean
+eval_dataset: keywords_test
+max_samples: 200
+cutoff_len: 2048
+per_device_eval_batch_size: 4
+preprocessing_num_workers: 4
+do_sample: false
+max_new_tokens: 256
+repetition_penalty: 1.0
+seed: 42
+report_to: none
+output_dir: saves/Qwen3-0.6B-Thinking/lora/keywords-clean-test-lora

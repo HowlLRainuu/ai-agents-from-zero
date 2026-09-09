@@ -1,0 +1,26 @@
+# 第 32 章最终测试。开发调参时改用 keywords_validation 和独立输出目录。
+model_name_or_path: Qwen/Qwen3-0.6B
+trust_remote_code: true
+stage: sft
+do_predict: true
+predict_with_generate: true
+finetuning_type: lora
+template: qwen3_nothink
+enable_thinking: false
+infer_dtype: float16
+fp16: true
+bf16: false
+# 纯预测时显式把模型转换为 FP16；不能只依赖 infer_dtype 或混合精度开关。
+fp16_full_eval: true
+dataset_dir: data/keywords-clean
+eval_dataset: keywords_test
+max_samples: 200
+cutoff_len: 2048
+per_device_eval_batch_size: 4
+preprocessing_num_workers: 4
+do_sample: false
+max_new_tokens: 256
+repetition_penalty: 1.0
+seed: 42
+report_to: none
+output_dir: saves/Qwen3-0.6B-Thinking/lora/keywords-clean-test-base
