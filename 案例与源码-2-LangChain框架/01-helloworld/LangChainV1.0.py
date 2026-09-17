@@ -45,7 +45,7 @@ model2 = init_chat_model(
     base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
 )
 
-print(model2.invoke("你是谁").content)
+print(model2.invoke("什么是Base URL, 你生动地给我简要解释一下").content)
 
 """
 【输出示例】

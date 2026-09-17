@@ -9,7 +9,7 @@
 - 真正发给聊天模型时，优先使用 `format_messages(...)` 或 `invoke({...})`，因为这两种方式能保留清晰的角色结构。
 """
 
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import (ChatPromptTemplate)
 
 # 用 from_messages 创建模板：一条 system（带 {role}）、一条 human（带 {question}）
 chat_prompt = ChatPromptTemplate.from_messages(
@@ -22,8 +22,10 @@ chat_prompt = ChatPromptTemplate.from_messages(
 #   写法 B（字典 + ** 解包）：format_messages(**{"role": "python开发工程师", "question": "堆排序怎么写"})
 # ** 表示把字典「解包」成 key=value 的形式传入，适合参数已经在 dict 里的场景。
 prompt_value = chat_prompt.format_messages(
-    **{"role": "python开发工程师", "question": "堆排序怎么写"}
+    role="python开发工程师",
+    question="堆排序怎么写"
 )
+print("format_messages()得到的类型为： ", type(prompt_value))
 print(prompt_value)
 
 print()
@@ -33,7 +35,8 @@ print()
 prompt_value2 = chat_prompt.invoke(
     {"role": "python开发工程师", "question": "堆排序怎么写"}
 )
-print(prompt_value2.to_string())
+print("invoke()得到的类型为： ", type(prompt_value2))
+print(prompt_value2) # prompt_value2的类型为ChatPromptValue，可以用.to_string()和.to_messages()转成相应类型
 
 print()
 
@@ -42,6 +45,7 @@ print()
 prompt_value3 = chat_prompt.format(
     **{"role": "python开发工程师", "question": "快速排序怎么写"}
 )
+print("format()得到的类型为： ", type(prompt_value3))
 print(prompt_value3)
 
 

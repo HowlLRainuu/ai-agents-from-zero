@@ -40,7 +40,9 @@ prompt_value = prompt.invoke(
 )
 
 # 把整段 prompt 转成字符串查看（系统设定 + 历史 + 当前问题）
-print(prompt_value.to_string())
+print("结合历史记忆后的当前整体提示词", prompt_value.to_string())
+print()
+print("结合历史记忆后的当前整体的ChatPromptValue", prompt_value)
 
 """
 【输出示例】

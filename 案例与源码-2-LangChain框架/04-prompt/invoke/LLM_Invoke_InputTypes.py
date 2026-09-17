@@ -10,10 +10,10 @@
 - 初学者若想把角色关系看得最清楚，优先用 `SystemMessage`、`HumanMessage` 等 Message 类写法。
 """
 
-import asyncio
+import asyncio # 用于 异步 - 单线程并发
 import os
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv  # dotenv 即 .env，用来处理.env文件
 from langchain.chat_models import init_chat_model
 from langchain_core.messages import HumanMessage, SystemMessage
 
@@ -34,7 +34,7 @@ def demo_message_objects():
         HumanMessage(content="你好，你是谁？"),
     ]
     resp = model.invoke(messages)
-    print(type(resp), resp.content[:80] if resp.content else "")
+    print("回复的类型为：", type(resp), "回复：", resp.content[:80] if resp.content else "")
 
 
 def demo_tuple_list():
@@ -59,7 +59,7 @@ def demo_dict_list():
 
 async def demo_ainvoke_tuple():
     """异步调用同样支持元组简写。"""
-    resp = await model.ainvoke([("user", "用一句话说明什么是素数")])
+    resp = await model.ainvoke([("user", "用一句话说明什么是素数")]) # ("user", "1") 会被自动转为HumanMessage(content="1")
     print(type(resp), resp.content[:80] if resp.content else "")
 
 

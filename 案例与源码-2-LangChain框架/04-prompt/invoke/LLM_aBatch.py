@@ -47,7 +47,6 @@ async def async_batch_call():
 # ---------- 4. 运行异步函数 ----------
 if __name__ == "__main__":
     asyncio.run(async_batch_call())
-
 """
 【输出示例】
 响应类型：<class 'list'>
